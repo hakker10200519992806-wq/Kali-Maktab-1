@@ -1,0 +1,17 @@
+name: kali_oquv
+description: Kali Linux buyruqlarini o'rganish ilovasi
+publish_to: none
+version: 2.0.0+2
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  webview_flutter: ^4.10.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/index.html

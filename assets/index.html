@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kali O'quv</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#f4f7fa;--card:#fff;--cd:#f1f5f9;--fg:#1b2433;--mut:#5a6b80;--bd:#d3dce8;--ac:#14788c;--ok:#16803c;--no:#c0392b;--wr:#8a5a00;--gr:#1fa84f;--hd:#14788c;--cb:#121a33;--ic:#c2255c;--zb:#f3f6fb;--tipb:#eaf7ef;--warnb:#fdeeee;--wt:#b02a2a;--bad:var(--no);--pn:var(--card);--tx:var(--fg);--ln:var(--bd);--hf:"Bricolage Grotesque",system-ui,sans-serif;--mf:"JetBrains Mono",ui-monospace,Consolas,monospace}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d1320;--card:#141c2d;--cd:#1b2539;--fg:#dbe4f4;--mut:#8d9db9;--bd:#26324b;--ac:#5b9bff;--ok:#3ec28f;--no:#ff7a6b;--wr:#f2b84b;--gr:#3ec28f;--hd:#5bc0d8;--cb:#0a0f1a;--ic:#ff8ab5;--zb:#18223a;--tipb:#12261f;--warnb:#2a1616;--wt:#ff8a8a}}
+:root[data-theme=dark]{--bg:#0d1320;--card:#141c2d;--cd:#1b2539;--fg:#dbe4f4;--mut:#8d9db9;--bd:#26324b;--ac:#5b9bff;--ok:#3ec28f;--no:#ff7a6b;--wr:#f2b84b;--gr:#3ec28f;--hd:#5bc0d8;--cb:#0a0f1a;--ic:#ff8ab5;--zb:#18223a;--tipb:#12261f;--warnb:#2a1616;--wt:#ff8a8a}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-size:var(--fs,16px);line-height:1.5;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}
+h1,h2,h3{font-family:var(--hf);margin:.2em 0}h2,h3{color:var(--hd)}
+#hd{display:flex;flex-wrap:wrap;gap:6px 14px;padding:10px 14px;border-bottom:1px solid var(--bd);background:var(--card);align-items:center;font-size:14px}
+#hd h1{font-size:18px;font-weight:800;white-space:nowrap;margin:0;color:var(--hd)}
+.bar{flex-basis:100%;height:8px;background:var(--cd);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--gr);transition:width .3s}
+main{max-width:720px;margin:0 auto;padding:14px}.mono{font-family:var(--mf);font-weight:600}
+.mu{color:var(--mut);font-size:13px}
+input[type=text],textarea{width:100%;padding:9px 11px;border-radius:6px;border:1px solid var(--bd);background:var(--card);color:var(--fg);font-size:var(--fs,16px);font-family:inherit}
+textarea{font:13px var(--mf)}
+details,.card{background:var(--card);border:1px solid var(--bd);border-radius:8px;margin:10px 0}.card{padding:14px}
+summary{padding:13px 14px;cursor:pointer;font-weight:600;font-family:var(--hf)}.item{padding:10px 14px;border-top:1px solid var(--bd);cursor:pointer}.item:hover{background:var(--cd)}.item small{display:block;color:var(--mut)}
+.item .mono{color:var(--ac)}
+button{font:inherit;font-size:13.5px;padding:8px 12px;margin:2px;border-radius:6px;border:1px solid var(--bd);background:var(--cd);color:var(--fg);cursor:pointer}
+button:hover:not(:disabled){border-color:var(--ac);color:var(--ac)}
+button:disabled{opacity:.5;cursor:default}
+button.p{background:var(--ac);color:#fff;border-color:var(--ac);font-weight:600}button.p:hover:not(:disabled){color:#fff;opacity:.9}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.opt{display:block;width:100%;margin:8px 0;text-align:left;padding:12px;background:var(--card);font-size:inherit}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 18%,var(--card));color:var(--fg)}
+.opt.bad{border-color:var(--no);background:color-mix(in srgb,var(--no) 18%,var(--card));color:var(--fg)}
+pre{background:var(--cb);border-left:4px solid var(--gr);color:#e6edf7;padding:12px;border-radius:4px;overflow-x:auto;margin:8px 0;white-space:pre-wrap;font:13px/1.45 var(--mf)}
+.term{display:flex;gap:8px;background:#0a0f1a;border-radius:8px;padding:10px 12px;color:#5b9bff;font:13px var(--mf);align-items:center}
+.term input{flex:1;min-width:0;background:transparent;border:0;color:#cfe3ff;font:var(--fs,15px) var(--mf);outline:none}
+#tlog{background:#0a0f1a;color:#cfe3ff;border-radius:8px 8px 0 0;padding:10px;height:260px;overflow:auto;font:calc(var(--fs,16px) - 3px)/1.45 var(--mf);white-space:pre-wrap;word-break:break-word}
+#tlog+.term{border-radius:0 0 8px 8px;border-top:1px solid #1d2a44}
+.pr{color:#5b9bff}.o{color:#8da2c6}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);z-index:20}
+nav button{flex:1;border:0;border-radius:0;margin:0;background:none;color:var(--mut);font:600 11.5px system-ui;padding:8px 0 7px;min-height:52px;display:flex;flex-direction:column;align-items:center;gap:1px}
+nav button span{font-size:20px;line-height:1}nav button.on{color:var(--ac)}
+.right{text-align:right;color:var(--mut)}
+.chip{padding:6px 11px;font-size:13px;border-radius:16px}.chip.on{background:var(--ac);color:#fff;border-color:var(--ac);font-weight:600}
+#toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 16px;border-radius:20px;opacity:0;transition:opacity .3s;font-size:13px;z-index:90;pointer-events:none}
+code{color:var(--ic);font:.92em var(--mf);background:color-mix(in srgb,var(--ic) 7%,transparent);padding:1px 5px;border-radius:4px}
+.bk{padding:16px 18px}
+.bk h2{font:800 26px/1.25 "DejaVu Sans",Verdana,var(--hf);color:var(--fg);margin:.2em 0 .7em;padding-bottom:8px;border-bottom:4px solid var(--gr)}
+.bk h3{font:700 20px/1.3 "DejaVu Sans",Verdana,var(--hf);color:var(--hd);margin:1.4em 0 .5em}
+.bk h4{font:700 16px "DejaVu Sans",Verdana,var(--hf);color:var(--fg);margin:1.3em 0 .4em}
+.bk p,.bk li{line-height:1.6}.bk ul,.bk ol{padding-left:22px}
+.bk pre{position:relative;margin:12px 0;white-space:pre;overflow-x:auto;font-size:13px;line-height:1.5}
+.bk pre code{background:none;color:inherit;padding:0;font:inherit}
+.cmt{color:#a9b6cc}
+.cpy{position:absolute;top:6px;right:6px;margin:0;padding:3px 8px;font-size:11px;background:#1f2a48;color:#cfe3ff;border-color:#2e3b5e}
+.tw{overflow-x:auto;margin:12px 0}.bk table{border-collapse:collapse;width:100%;font-size:14px}
+.bk th{background:var(--cb);color:#fff;text-align:left;padding:8px 10px;border:1px solid var(--cb)}
+.bk td{padding:7px 10px;border:1px solid var(--bd);vertical-align:top}.bk tr:nth-child(even) td{background:var(--zb)}
+.bk .tip,.bk .warn{margin:14px 0;padding:10px 14px;border-left:4px solid var(--gr);background:var(--tipb);border-radius:0 6px 6px 0}
+.bk .warn{border-color:#d63a3a;background:var(--warnb)}.bk .tip b,.bk .warn b{display:block;margin-bottom:2px}.bk .warn b{color:var(--wt)}
+.bk .ex li{margin:6px 0}.bk .ex label{cursor:pointer}.bk .ex input{margin-right:6px}.bk .ex label.done{opacity:.6}
+.item .mono,.card .mono{color:var(--ac)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* ---- Robot ---- */
+#rb{position:fixed;left:0;top:0;width:96px;z-index:60;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;will-change:transform}
+#rb[hidden]{display:none}#rb.g{cursor:grabbing}
+#rb .rbf{animation:rbob 3.2s ease-in-out infinite}
+#rb.g .rbf{animation:none;transform:rotate(-5deg) scale(1.07)}
+@keyframes rbob{50%{transform:translateY(-7px) rotate(1.5deg) scale(1.015)}}
+#rb svg{overflow:visible;display:block;width:100%;height:auto;filter:drop-shadow(0 8px 10px rgba(0,0,0,.28));transition:transform .25s}
+#rbE{filter:drop-shadow(0 0 2.5px #7df3ff);transition:transform .12s}
+.e,.sp,.pu{transform-box:fill-box;transform-origin:center}
+.e[data-e=idle],.e[data-e=flat]{animation:blink 4.5s infinite}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+.sp{animation:spin 1.1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+.pu{animation:pulse .8s ease-in-out infinite}@keyframes pulse{50%{transform:scale(1.18)}}
+.zz{animation:zz 2.4s ease-in-out infinite}@keyframes zz{0%{opacity:0;transform:translateY(6px)}50%{opacity:1}100%{opacity:0;transform:translateY(-6px)}}
+.tr{animation:tear 1.6s ease-in infinite}@keyframes tear{0%{opacity:0;transform:translateY(-4px)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+.rbb{position:absolute;width:max-content;max-width:min(230px,64vw);padding:8px 12px;border-radius:14px;background:var(--pn);color:var(--tx);border:1px solid var(--ln);font-size:13px;line-height:1.4;box-shadow:0 6px 18px rgba(0,0,0,.18);opacity:0;transform:translateY(4px) scale(.96);transition:opacity .2s,transform .2s;pointer-events:none}
+.rbb.s{opacity:1;transform:none}.rbb.up{bottom:100%;margin-bottom:4px}.rbb.dn{top:100%;margin-top:4px}.rbb.l{left:0}.rbb.r{right:0}
+.arm{transition:transform .4s cubic-bezier(.34,1.5,.64,1)}
+@keyframes sg{from{transform:rotate(calc(var(--s)*var(--amp)*-1deg))}to{transform:rotate(calc(var(--s)*var(--amp)*1deg))}}
+.rbhl{outline:3px solid #7df3ff!important;outline-offset:3px;border-radius:8px;animation:hl .7s ease-in-out infinite alternate}@keyframes hl{to{outline-color:transparent}}
+.rpr{transition:transform .4s cubic-bezier(.34,1.5,.64,1)}
+#rbH{transform-origin:60px 84px}
+.an{transform-box:fill-box;transition:transform .45s cubic-bezier(.34,1.5,.64,1)}.anl{transform-origin:70% 90%}.anr{transform-origin:30% 90%}
+#rb:is([data-m=sad],[data-m=tired],[data-m=sick]) .anl{transform:rotate(-38deg) scaleY(.75)}
+#rb:is([data-m=sad],[data-m=tired],[data-m=sick]) .anr{transform:rotate(38deg) scaleY(.75)}
+#rb[data-m=think] .anr,#rb[data-m=sus] .anr{transform:rotate(30deg)}
+#rb:is([data-m=happy],[data-m=proud],[data-m=star],[data-m=love],[data-m=money]) .an{animation:anw .5s ease-in-out infinite alternate}
+@keyframes anw{to{transform:rotate(8deg)}}
+.em{transition:filter .2s}#rb.ty .em{filter:drop-shadow(0 0 5px #7df3ff);stroke:#7df3ff}
+#rb.nod #rbH{animation:nod .45s ease-in-out 3}@keyframes nod{50%{transform:translateY(7px)}}
+#rb.shk #rbH{animation:shk .3s ease-in-out 4}@keyframes shk{25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+#rb.fl .rbf{animation:fl .95s ease-in-out;transform-origin:50% 60%}@keyframes fl{0%{transform:none}50%{transform:translateY(-52px) rotate(180deg)}100%{transform:rotate(360deg)}}
+#rb.bw .rbf{animation:bw 1.6s ease-in-out;transform-origin:50% 100%}@keyframes bw{35%,65%{transform:rotate(20deg) translateY(6px)}}
+#rb.dc .rbf{animation:dc .5s ease-in-out infinite alternate;transform-origin:50% 100%}@keyframes dc{from{transform:rotate(-9deg)}to{transform:rotate(9deg) translateY(-12px)}}
+.rbd{position:absolute;width:max-content;max-width:min(280px,76vw);padding:8px 10px;border-radius:12px;background:#10261c;color:#e8fff0;border:3px solid #8a5a2b;box-shadow:0 6px 18px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .2s;display:flex;flex-wrap:wrap;gap:6px}
+.rbd.s{opacity:1}.rbd.up{bottom:100%;margin-bottom:4px}.rbd.dn{top:100%;margin-top:4px}.rbd.l{left:0}.rbd.r{right:0}
+.rbd .mu{width:100%;color:#a9d6bb;font-size:12px}
+.tk{display:flex;flex-direction:column;align-items:center;opacity:0;animation:tkin .4s forwards}
+.tk code{background:#0a1a12;color:inherit;border:1px solid currentColor;padding:2px 7px;border-radius:4px;font:13px var(--mf)}.tk i{font-size:10px;font-style:normal}
+.tk.b{color:#7df3ff}.tk.o{color:#ffc65a}.tk.g{color:#7dff9d}.tk.p{color:#ff8ad8}
+@keyframes tkin{from{opacity:0;transform:translateY(6px) scale(.8)}to{opacity:1;transform:none}}
+@media(max-width:860px){#rb{width:70px}}
+@media(prefers-reduced-motion:reduce){#rb .rbf,.e,.sp,.pu,.zz,.tr,.rbhl,#rb #rbH,.an,.tk{animation:none!important}.arm{transition:none!important}}
+</style></head><body>
+<div id="hd"></div><main id="app"></main><nav id="nav"></nav><div id="toast"></div>
+<div id="rb" role="img" aria-label="Robot o'qituvchi Kali-bot. Sudrab surish mumkin">
+<div id="rbb" class="rbb" role="status" aria-live="polite"></div>
+<div class="rbf"><svg viewBox="0 0 120 124" aria-hidden="true">
+<defs><linearGradient id="rh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e6ebf3"/></linearGradient><linearGradient id="rgb2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b3d0f7"/><stop offset="1" stop-color="#6f9fe0"/></linearGradient><radialGradient id="rbl"><stop offset="0" stop-color="#ff5a5a" stop-opacity=".7"/><stop offset="1" stop-color="#ff5a5a" stop-opacity="0"/></radialGradient></defs>
+<ellipse cx="60" cy="112" rx="30" ry="22" fill="url(#rh)" stroke="#c9d0dc" stroke-width="2"/>
+<path d="M32 98 Q34 86 60 86 Q86 86 88 98 Q86 114 60 116 Q34 114 32 98Z" fill="url(#rgb2)" stroke="#8fb0e0" stroke-width="2"/>
+<circle cx="60" cy="100" r="6" style="fill:var(--cl,#7df3ff);filter:drop-shadow(0 0 4px var(--cl,#38d6ff));transition:fill .3s"/><path d="M54 110 L60 118 L66 110" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<g data-ac="tie" style="display:none"><path d="M60 88 L49 82 V94Z M60 88 L71 82 V94Z" fill="#e4382e" stroke="#b82a22"/><circle cx="60" cy="88" r="3" fill="#b82a22"/></g><g id="rbH"><path class="an anl" d="M30 20 Q14 8 18 -10 Q34 -4 40 14Z" fill="url(#rgb2)" stroke="#8fb0e0" stroke-width="1.5"/><path class="an anr" d="M90 20 Q106 8 102 -10 Q86 -4 80 14Z" fill="url(#rgb2)" stroke="#8fb0e0" stroke-width="1.5"/>
+<circle class="em" cx="6" cy="48" r="11" fill="url(#rgb2)" stroke="#8fb0e0" stroke-width="2"/><circle class="em" cx="114" cy="48" r="11" fill="url(#rgb2)" stroke="#8fb0e0" stroke-width="2"/>
+<rect x="6" y="6" width="108" height="84" rx="36" fill="url(#rh)" stroke="#c9d0dc" stroke-width="2"/>
+<rect x="14" y="14" width="92" height="64" rx="28" fill="#05080f"/>
+<g id="rbE" fill="#7df3ff" stroke="#7df3ff" stroke-width="0" stroke-linecap="round" stroke-linejoin="round">
+<g class="e" data-e="tired" fill="none" stroke-width="3.5"><path d="M30 46 H50 A10 10 0 0 1 30 46Z" fill="#7df3ff" stroke="none"/><path d="M70 46 H90 A10 10 0 0 1 70 46Z" fill="#7df3ff" stroke="none"/><path d="M28 46 H52 M68 46 H92"/></g>
+<g class="e" data-e="sus" fill="none" stroke-width="4"><path d="M30 46 H50 A10 10 0 0 1 30 46Z" fill="#7df3ff" stroke="none"/><circle cx="80" cy="45" r="9" fill="#7df3ff" stroke="none"/><path d="M28 44 H52"/><path d="M68 28 L92 22"/></g>
+<g class="e" data-e="proud"><ellipse cx="40" cy="42" rx="8.5" ry="12"/><ellipse cx="80" cy="42" rx="8.5" ry="12"/><circle cx="37" cy="37" r="3" fill="#fff" stroke="none"/><circle cx="77" cy="37" r="3" fill="#fff" stroke="none"/></g>
+<g class="e" data-e="sick" fill="none" stroke-width="4.5"><path d="M30 42 Q40 50 50 42 M70 42 Q80 50 90 42"/><rect x="24" y="52" width="72" height="22" rx="9" fill="#d6ecff" stroke="#8fb8e8" stroke-width="1.5"/><path d="M30 60 H90 M30 66 H90" stroke="#9cc0ee" stroke-width="1.5"/></g>
+<g class="e" data-e="cry" fill="none" stroke-width="5"><path d="M30 50 Q40 34 50 50"/><path d="M70 50 Q80 34 90 50"/><path class="tr" d="M34 56 Q39 64 34 69 Q29 64 34 56Z" fill="#9fd4ff" stroke="none"/><path class="tr" style="animation-delay:.6s" d="M86 56 Q91 64 86 69 Q81 64 86 56Z" fill="#9fd4ff" stroke="none"/></g>
+<g class="e" data-e="hack" style="fill:#39ff14;stroke:#39ff14"><text id="hk1" x="40" y="55" font-size="30" font-weight="800" text-anchor="middle" stroke="none">1</text><text id="hk2" x="80" y="55" font-size="30" font-weight="800" text-anchor="middle" stroke="none">0</text></g>
+<g class="e" data-e="load" fill="none" stroke-width="5"><g transform="translate(60 45)"><g class="sp"><path d="M-14 0 A14 14 0 1 1 0 14"/></g></g></g>
+<g class="e" data-e="idle"><rect x="34" y="33" width="12" height="26" rx="4"/><rect x="74" y="33" width="12" height="26" rx="4"/></g>
+<g class="e" data-e="flat"><rect x="29" y="43" width="22" height="5" rx="2.5"/><rect x="69" y="43" width="22" height="5" rx="2.5"/></g>
+<g class="e" data-e="happy" fill="none" stroke-width="5"><path d="M31 54 L40 40 L49 54"/><path d="M71 54 L80 40 L89 54"/></g>
+<g class="e" data-e="love" fill="#ff4d6d"><g transform="translate(40 46)"><path class="pu" d="M0 11 C-19 -2 -10 -17 0 -6 C10 -17 19 -2 0 11Z"/></g><g transform="translate(80 46)"><path class="pu" d="M0 11 C-19 -2 -10 -17 0 -6 C10 -17 19 -2 0 11Z"/></g></g>
+<g class="e" data-e="star"><g transform="translate(40 45)"><path class="pu" d="M0-16 Q2-3 15 0 Q2 3 0 16 Q-2 3 -15 0 Q-2-3 0-16Z"/></g><g transform="translate(80 45)"><path class="pu" d="M0-16 Q2-3 15 0 Q2 3 0 16 Q-2 3 -15 0 Q-2-3 0-16Z"/></g></g>
+<g class="e" data-e="wow"><circle cx="40" cy="45" r="10"/><circle cx="80" cy="45" r="10"/></g>
+<g class="e" data-e="think"><rect x="31" y="43" width="18" height="5" rx="2.5"/><rect x="69" y="43" width="18" height="5" rx="2.5"/><text x="96" y="34" font-size="17" font-weight="800" stroke="none" text-anchor="middle">?</text></g>
+<g class="e" data-e="sleepy" fill="none" stroke-width="4.5"><path d="M30 46 Q40 55 50 46"/><path d="M70 46 Q80 55 90 46"/><text class="zz" x="96" y="32" font-size="14" font-weight="800" fill="#7df3ff" stroke="none">z</text><text class="zz" x="86" y="26" font-size="10" font-weight="800" fill="#7df3ff" stroke="none" style="animation-delay:1.2s">z</text></g>
+<g class="e" data-e="sad"><rect x="35" y="40" width="10" height="15" rx="4"/><rect x="75" y="40" width="10" height="15" rx="4"/><path d="M30 35 L49 29 M71 29 L90 35" fill="none" stroke-width="4"/><path class="tr" d="M48 58 Q53 65 48 69 Q43 65 48 58Z" fill="#9fd4ff"/></g>
+<g class="e" data-e="dizzy" fill="none" stroke-width="2.6"><g transform="translate(40 45)"><g class="sp"><path d="M0 0 m-2 0 a2 2 0 1 1 4 0 a4.5 4.5 0 1 1 -9 0 a7 7 0 1 1 14 0 a9.5 9.5 0 1 1 -19 0"/></g></g><g transform="translate(80 45)"><g class="sp"><path d="M0 0 m-2 0 a2 2 0 1 1 4 0 a4.5 4.5 0 1 1 -9 0 a7 7 0 1 1 14 0 a9.5 9.5 0 1 1 -19 0"/></g></g></g>
+<g class="e" data-e="squint" fill="none" stroke-width="5"><path d="M30 33 L50 45 L30 57"/><path d="M90 33 L70 45 L90 57"/></g>
+<g class="e" data-e="angry"><path d="M29 35 L52 46 Q52 58 40 58 Q29 55 29 35Z"/><path d="M91 35 L68 46 Q68 58 80 58 Q91 55 91 35Z"/></g>
+<g class="e" data-e="wink"><rect x="34" y="33" width="12" height="26" rx="4"/><path d="M90 33 L72 45 L90 57" fill="none" stroke-width="5"/></g>
+<g class="e" data-e="blush" fill="none" stroke-width="5"><path d="M30 52 Q40 36 50 52"/><path d="M70 52 Q80 36 90 52"/><ellipse cx="27" cy="62" rx="11" ry="6" fill="url(#rbl)" stroke="none"/><ellipse cx="93" cy="62" rx="11" ry="6" fill="url(#rbl)" stroke="none"/></g>
+<g class="e" data-e="money"><text x="40" y="57" font-size="34" font-weight="800" text-anchor="middle" stroke="none">$</text><text x="80" y="57" font-size="34" font-weight="800" text-anchor="middle" stroke="none">$</text></g>
+</g><g data-ac="hood" style="display:none"><path d="M2 52 Q0 -6 60 -8 Q120 -6 118 52 Q112 26 90 18 Q60 8 30 18 Q8 26 2 52Z" fill="#1c2430" stroke="#0e131b" stroke-width="2"/></g><g data-ac="hat" style="display:none"><path d="M26 14 Q60 -18 94 14Z" fill="#e4382e" stroke="#b82a22" stroke-width="2"/><rect x="24" y="12" width="72" height="6" rx="3" fill="#b82a22"/></g><g data-ac="glasses" style="display:none" fill="none" stroke="#f2b81c" stroke-width="3"><circle cx="40" cy="45" r="13"/><circle cx="80" cy="45" r="13"/><path d="M53 45 H67"/></g></g><g id="aL" class="arm"><g class="sw"><rect class="fg" x="-2.6" y="38" width="5.2" height="12" rx="2.6" fill="url(#rh)" stroke="#c9d0dc" stroke-width="1.4" style="display:none"/><rect x="-5" y="-3" width="10" height="36" rx="5" fill="url(#rgb2)" stroke="#8fb0e0" stroke-width="1.6"/><circle cy="34" r="7.5" fill="url(#rh)" stroke="#c9d0dc" stroke-width="1.6"/></g></g><g id="aR" class="arm"><g class="sw"><rect class="fg" x="-2.6" y="38" width="5.2" height="12" rx="2.6" fill="url(#rh)" stroke="#c9d0dc" stroke-width="1.4" style="display:none"/><rect x="-5" y="-3" width="10" height="36" rx="5" fill="url(#rgb2)" stroke="#8fb0e0" stroke-width="1.6"/><circle cy="34" r="7.5" fill="url(#rh)" stroke="#c9d0dc" stroke-width="1.6"/><g class="rpr" style="transform:translate(0px,34px)">
+<g data-p="magnifier" style="display:none"><circle cx="0" cy="-17" r="9" fill="rgba(210,245,255,.35)" stroke="#7cc23c" stroke-width="3"/><path d="M0 -8 V5" stroke="#7cc23c" stroke-width="4" stroke-linecap="round"/></g>
+<g data-p="pencil" style="display:none"><g transform="rotate(28)"><rect x="-2.6" y="-22" width="5.2" height="22" fill="#f5b83d"/><path d="M-2.6 0 L2.6 0 L0 7Z" fill="#f3d5a5"/><path d="M-1 4.5 L1 4.5 L0 7Z" fill="#333"/><rect x="-2.6" y="-26" width="5.2" height="4" rx="1.5" fill="#f08a9a"/></g></g>
+<g data-p="trophy" style="display:none"><g transform="translate(0 -9)"><path d="M-8 -13 H8 V-5 Q8 4 0 5 Q-8 4 -8 -5Z" fill="#f2b81c" stroke="#c88a0a"/><rect x="-1.6" y="5" width="3.2" height="5" fill="#d99a0b"/><rect x="-6" y="10" width="12" height="4" rx="1.5" fill="#d99a0b"/><path d="M-8 -10 Q-14 -10 -11 -4 Q-9 0 -7 0 M8 -10 Q14 -10 11 -4 Q9 0 7 0" fill="none" stroke="#f2b81c" stroke-width="2"/></g></g>
+<g data-p="heart" style="display:none"><path d="M0 1 C-13 -9 -7 -22 0 -14 C7 -22 13 -9 0 1Z" fill="#ef3b4e"/></g>
+<g data-p="gift" style="display:none"><rect x="-9" y="-16" width="18" height="15" rx="1.5" fill="#e4382e"/><rect x="-2.2" y="-16" width="4.4" height="15" fill="#f6b93b"/><rect x="-9" y="-10" width="18" height="3.4" fill="#f6b93b"/><path d="M0 -16 Q-8 -24 -8 -17 Q-4 -16 0 -16 Q4 -16 8 -17 Q8 -24 0 -16Z" fill="#f6b93b"/></g>
+<g data-p="coins" style="display:none"><ellipse cx="0" cy="-2" rx="9" ry="3.5" fill="#f2b81c" stroke="#c88a0a"/><ellipse cx="0" cy="-6" rx="9" ry="3.5" fill="#f7c93a" stroke="#c88a0a"/><ellipse cx="0" cy="-10" rx="9" ry="3.5" fill="#f2b81c" stroke="#c88a0a"/></g>
+<g data-p="clock" style="display:none"><circle cx="0" cy="-12" r="10" fill="#fff" stroke="#566" stroke-width="2"/><path d="M0 -12 V-18 M0 -12 L5 -10" stroke="#222" stroke-width="2" stroke-linecap="round"/></g>
+</g></g></g></svg></div></div>
+
+<script>
+const DATA={"Fayl va papkalar": [["ls", "Papka ichidagi fayllarni ko'rsatadi", "ls -la"], ["cd", "Papkaga o'tadi", "cd /etc"], ["pwd", "Hozirgi papka yo'lini ko'rsatadi", "pwd"], ["mkdir", "Yangi papka yaratadi", "mkdir -p test/papka"], ["touch", "Bo'sh fayl yaratadi", "touch fayl.txt"], ["cp", "Fayl yoki papkani nusxalaydi", "cp -r papka papka2"], ["mv", "Ko'chiradi yoki nomini o'zgartiradi", "mv eski.txt yangi.txt"], ["rm", "Fayl yoki papkani o'chiradi", "rm -r papka"], ["find", "Fayllarni qidiradi", "find / -name '*.conf'"], ["locate", "Fayllarni baza orqali tez qidiradi", "locate passwd"]], "Matn bilan ishlash": [["cat", "Fayl mazmunini chiqaradi", "cat /etc/os-release"], ["less", "Faylni sahifalab ko'rsatadi", "less katta.log"], ["head", "Faylning boshidagi qatorlarni ko'rsatadi", "head -n 5 fayl.txt"], ["tail", "Faylning oxiridagi qatorlarni ko'rsatadi", "tail -f /var/log/syslog"], ["grep", "Matn ichidan qidiradi", "grep -i kali fayl.txt"], ["wc", "Qator, so'z va belgilarni sanaydi", "wc -l fayl.txt"], ["sort", "Qatorlarni tartiblaydi", "sort fayl.txt"], ["echo", "Matn chiqaradi", "echo salom"]], "Ruxsatlar va foydalanuvchilar": [["whoami", "Joriy foydalanuvchi nomini ko'rsatadi", "whoami"], ["id", "Foydalanuvchi va guruh ID larini ko'rsatadi", "id"], ["sudo", "Buyruqni administrator huquqi bilan bajaradi", "sudo apt update"], ["chmod", "Fayl ruxsatlarini o'zgartiradi", "chmod 755 skript.sh"], ["chown", "Fayl egasini o'zgartiradi", "chown user:user fayl.txt"], ["passwd", "Parolni o'zgartiradi", "passwd"], ["adduser", "Yangi foydalanuvchi qo'shadi", "sudo adduser talaba"]], "Tizim va jarayonlar": [["uname", "Tizim haqida ma'lumot beradi", "uname -a"], ["ps", "Jarayonlar ro'yxatini ko'rsatadi", "ps aux"], ["top", "Jarayonlarni jonli kuzatadi", "top"], ["kill", "Jarayonni to'xtatadi", "kill -9 1234"], ["df", "Disk bo'sh joyini ko'rsatadi", "df -h"], ["free", "Xotira holatini ko'rsatadi", "free -h"], ["systemctl", "Xizmatlarni boshqaradi", "systemctl status ssh"], ["history", "Oldingi buyruqlar tarixini ko'rsatadi", "history"], ["man", "Buyruq qo'llanmasini ochadi", "man nmap"]], "Tarmoq": [["ip", "Tarmoq interfeyslari va manzillarni ko'rsatadi", "ip a"], ["ping", "Hostga ulanishni tekshiradi", "ping -c 4 google.com"], ["ss", "Ochiq ulanishlar va portlarni ko'rsatadi", "ss -tulpn"], ["curl", "URL dan ma'lumot yuklaydi", "curl -I https://example.com"], ["wget", "Fayl yuklab oladi", "wget https://example.com/fayl.zip"], ["traceroute", "Paket yo'lini ko'rsatadi", "traceroute google.com"], ["ssh", "Masofaviy tizimga xavfsiz ulanadi", "ssh user@192.168.1.10"]], "Paketlar (apt)": [["apt update", "Paketlar ro'yxatini yangilaydi", "sudo apt update"], ["apt upgrade", "O'rnatilgan paketlarni yangilaydi", "sudo apt upgrade"], ["apt install", "Paket o'rnatadi", "sudo apt install nmap"], ["apt remove", "Paketni o'chiradi", "sudo apt remove nmap"], ["apt search", "Paket qidiradi", "apt search wireshark"]], "Kali vositalari (faqat ruxsat etilgan tizimlarda)": [["nmap", "Tarmoq va portlarni skanerlaydi", "nmap -sV 192.168.1.1"], ["whois", "Domen egasi haqida ma'lumot beradi", "whois example.com"], ["dig", "DNS yozuvlarini so'raydi", "dig example.com"], ["tcpdump", "Tarmoq paketlarini ushlaydi", "sudo tcpdump -i eth0"], ["nikto", "Veb-server zaifliklarini skanerlaydi", "nikto -h http://localhost"], ["gobuster", "Veb-saytda yashirin yo'llarni qidiradi", "gobuster dir -u http://localhost -w list.txt"], ["john", "Parol xeshlarini tekshiradi (John the Ripper)", "john --wordlist=list.txt hash.txt"]]};
+const TG=['fayl','matn','ruxsat','tizim','tarmoq','apt','kali'];
+Object.keys(DATA).forEach((k,i)=>DATA[k].forEach(c=>c[3]=[TG[i]]));
+let ALL=[];const rebuild=()=>{ALL=[...Object.values(DATA).flat(),...S.custom]};
+const LV=[[0,"Yangi boshlovchi"],[100,"Foydalanuvchi"],[300,"Administrator"],[600,"Pentester"],[1000,"Root"]];
+const GOAL=10,INT=[6e4,6e5,864e5,2592e5,6048e5];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const p2=n=>String(n).padStart(2,'0');
+const fmt=d=>d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());
+const day=()=>fmt(new Date());
+const KEY='kali_oquv_v1';
+const fresh=()=>({xp:0,streak:0,last:'',today:{d:'',n:0},fav:[],box:{},due:{},wrong:{},missions:{},opt:{},best:0,total:0,correct:0,custom:[],set:{theme:'auto',font:16},rb:null,bk:{}});
+let S=fresh();
+try{Object.assign(S,JSON.parse(localStorage.getItem(KEY))||{})}catch(e){}
+function fix(){if(!S.bk||typeof S.bk!=='object'||Array.isArray(S.bk))S.bk={};if(!Array.isArray(S.custom))S.custom=[];S.custom=S.custom.filter(c=>Array.isArray(c)&&c.length>=3);S.custom.forEach(c=>{if(!Array.isArray(c[3]))c[3]=['mening']});S.set=Object.assign({theme:'auto',font:16},S.set||{});S.rb=Object.assign({nm:'',col:"Ko'k",acc:[],unl:[],mute:false,hid:false,x:null,y:null,seen:0},S.rb||{});if(!Array.isArray(S.rb.acc))S.rb.acc=[];if(!Array.isArray(S.rb.unl))S.rb.unl=[]}
+function applySet(){const d=document.documentElement;if(!d)return;if(S.set.theme==='auto')d.removeAttribute('data-theme');else d.setAttribute('data-theme',S.set.theme);d.style.setProperty('--fs',S.set.font+'px')}
+fix();rebuild();applySet();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const todayN=()=>S.today.d===day()?S.today.n:0;
+function toast(m){const e=$('#toast');e.textContent=m;e.style.opacity=1;clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.opacity=0,2200)}
+function copy(t){const fb=()=>{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}a.remove()};try{navigator.clipboard.writeText(t).catch(fb)}catch(e){fb()}toast('Nusxalandi')}
+function lvl(x){let i=0;LV.forEach((l,k)=>{if(x>=l[0])i=k});return i}
+function addXP(n){const a=lvl(S.xp);S.xp+=n;const b=lvl(S.xp);if(b>a)toast('Yangi daraja: '+LV[b][1]+'!')}
+function act(){const d=day();if(S.today.d!==d)S.today={d,n:0};if(S.last!==d){S.streak=S.last===fmt(new Date(Date.now()-864e5))?S.streak+1:1;S.last=d}}
+function answer(c,ok,xp=10){act();S.today.n++;S.total++;
+ if(ok){S.correct++;addXP(xp)}else S.wrong[c[0]]=(S.wrong[c[0]]||0)+1;
+ let b=S.box[c[0]]||0;b=ok?Math.min(4,b+1):0;S.box[c[0]]=b;S.due[c[0]]=Date.now()+INT[b];
+ if(S.today.n===GOAL){addXP(20);toast("Kunlik maqsad bajarildi! +20 XP")}
+ save();head()}
+function head(){const l=lvl(S.xp),n=LV[l+1],pc=n?Math.round((S.xp-LV[l][0])/(n[0]-LV[l][0])*100):100;
+ $('#hd').innerHTML=`<h1>Kali O'quv</h1><span>🔥 ${S.streak} kun</span><span><b>${LV[l][1]}</b> · ${S.xp} XP</span><span>Bugun ${Math.min(todayN(),GOAL)}/${GOAL}</span><div class="bar"><i style="width:${pc}%"></i></div>`}
+
+/* ---------- Opsiya va argument darslari ---------- */
+const OPT={
+ls:[["ls","Opsiyasiz: faqat nomlar chiqadi (yashirin fayllarsiz).","Desktop  Documents  notes.txt"],
+["ls -l","-l (long): ruxsatlar, egasi, hajmi va sanasi bilan uzun ro'yxat.","-rw-r--r-- 1 kali kali 120 Nov 3 notes.txt"],
+["ls -a","-a (all): nuqta bilan boshlanadigan yashirin fayllarni ham ko'rsatadi.",".  ..  .bashrc  Desktop  notes.txt"],
+["ls -la","Qisqa opsiyalarni birlashtirish mumkin: -l -a = -la."],
+["ls -lh /etc","-h hajmni o'qishga qulay qiladi (1.2K, 4M). /etc esa ARGUMENT: qaysi papka ko'rilishi.","-rw-r--r-- 1 root root 1.2K hosts"]],
+mkdir:[["mkdir test","Argument: yangi papka nomi."],
+["mkdir a b c","Bir nechta argument: uchta papka birdaniga yaratiladi."],
+["mkdir x/y/z","x yo'q bo'lsa xato beradi.","mkdir: cannot create directory 'x/y/z': No such file or directory"],
+["mkdir -p x/y/z","-p (parents): oraliq papkalarni ham yaratadi."],
+["mkdir -v test2","-v (verbose): nima qilganini yozadi.","mkdir: created directory 'test2'"]],
+cp:[["cp a.txt b.txt","Ikki argument: manba va maqsad. a.txt nusxasi b.txt bo'ladi."],
+["cp a.txt papka/","Maqsad papka bo'lsa, fayl shu papka ichiga nusxalanadi."],
+["cp papka papka2","Papka uchun -r kerak.","cp: -r not specified; omitting directory 'papka'"],
+["cp -r papka papka2","-r (recursive): papkani ichidagilari bilan nusxalaydi."],
+["cp -i a.txt b.txt","-i (interactive): b.txt bor bo'lsa, ustiga yozishdan oldin so'raydi.","cp: overwrite 'b.txt'?"]],
+rm:[["rm fayl.txt","Faylni o'chiradi. Savatcha yo'q, qaytarib bo'lmaydi!"],
+["rm papka","Papkani o'chirmaydi.","rm: cannot remove 'papka': Is a directory"],
+["rm -r papka","-r: papkani ichidagilari bilan o'chiradi."],
+["rm -i fayl.txt","-i: har o'chirishdan oldin tasdiq so'raydi (xavfsiz).","rm: remove regular file 'fayl.txt'?"],
+["rm -rf papka","-f (force) hech narsa so'ramaydi. Juda ehtiyot bo'ling: noto'g'ri yo'l (ayniqsa sudo bilan) tizimni buzishi mumkin."]],
+grep:[["grep kali fayl.txt","1-argument: qidiriladigan so'z, 2-argument: fayl. Mos qatorlar chiqadi.","kali linux o'rganyapman"],
+["grep -i kali fayl.txt","-i (ignore case): Kali, KALI, kali hammasi topiladi."],
+["grep -n kali fayl.txt","-n: qator raqamini ko'rsatadi.","3:kali linux o'rganyapman"],
+["grep -v kali fayl.txt","-v (invert): so'z YO'Q qatorlarni chiqaradi."],
+["grep -rc kali .","-r (papka ichida hamma fayldan) va -c (nechta qator mos) birlashtirildi."]],
+find:[["find . -name notes.txt","Argument: qayerdan (.) va shart. -name o'zi opsiya, nomi esa uning qiymati.","./Documents/notes.txt"],
+["find / -name '*.conf'","* istalgan belgilar. Qo'shtirnoq shart, aks holda shell uni o'zi ochib yuboradi."],
+["find . -type d","-type d: faqat papkalar; -type f: faqat fayllar."],
+["find . -size +10M","10 MB dan katta fayllar."],
+["find . -mtime -1","Oxirgi 1 kunda o'zgargan fayllar."]],
+head:[["head fayl.txt","Birinchi 10 qator (standart)."],
+["head -n 3 fayl.txt","-n 3: opsiya qiymat oladi, birinchi 3 qator."],
+["head -3 fayl.txt","Qisqa yozuv, natija bir xil."],
+["tail -n 3 fayl.txt","tail teskari: oxirgi 3 qator."],
+["tail -f log.txt","-f (follow): fayl oxirini jonli kuzatadi. Chiqish: Ctrl+C. Loglar uchun juda foydali."]],
+chmod:[["ls -l skript.sh","Avval ruxsatlarni ko'ramiz: r=4 (o'qish), w=2 (yozish), x=1 (bajarish).","-rw-r--r-- 1 kali kali 40 skript.sh"],
+["chmod +x skript.sh","+x: bajarish huquqini qo'shadi."],
+["chmod u+x skript.sh","u=egasi, g=guruh, o=boshqalar, a=hamma. Bu faqat egasiga x beradi."],
+["chmod 755 skript.sh","Raqamli: 7=rwx (4+2+1), 5=r-x. Ega: rwx, guruh va boshqalar: r-x.","-rwxr-xr-x"],
+["chmod 600 maxfiy.txt","6=rw-, 0=---. Faqat ega o'qiy va yoza oladi (SSH kalitlari uchun odatiy)."]],
+ping:[["ping google.com","Cheksiz yuboradi, Ctrl+C bilan to'xtatiladi."],
+["ping -c 4 google.com","-c 4 (count): 4 ta paketdan keyin to'xtaydi.","4 packets transmitted, 4 received, 0% packet loss"],
+["ping -i 2 google.com","-i 2 (interval): har 2 soniyada bittadan."],
+["ping -c 1 192.168.1.1","Argument IP manzil ham bo'lishi mumkin. 1 ta paket: tez tekshiruv."]],
+curl:[["curl https://example.com","Sahifa kodini terminalga chiqaradi."],
+["curl -I https://example.com","-I: faqat sarlavhalar (headers).","HTTP/2 200\ncontent-type: text/html"],
+["curl -o sahifa.html https://example.com","-o: natijani faylga saqlaydi."],
+["curl -L http://example.com","-L: yo'naltirishlarga (redirect) ergashadi."]],
+nmap:[["nmap 192.168.1.1","Eng oddiysi: 1000 ta mashhur portni tekshiradi. (Faqat o'zingizning yoki ruxsat berilgan tarmoqda!)"],
+["nmap -p 22,80 192.168.1.1","-p: faqat 22 va 80 portlar."],
+["nmap -sV 192.168.1.1","-sV: ochiq portdagi xizmat versiyasini aniqlaydi."],
+["nmap -sn 192.168.1.0/24","-sn: port skanersiz, tarmoqda qaysi qurilmalar yoqilganini topadi. /24 = 256 ta manzil."]]
+};
+OPT.tail=OPT.head;
+const OK=Object.keys(OPT).filter(k=>k!=='tail');
+
+/* ---------- Sandbox terminal ---------- */
+const FS0=()=>({home:{kali:{
+"notes.txt":"Kali Linux o'rganish rejasi\n1. ls, cd, pwd\n2. grep va find\n3. nmap\nKali eng yaxshi tanlov\n",
+".bashrc":"# yashirin sozlama fayli\n",
+hujjatlar:{"reja.txt":"Dushanba: terminal\nSeshanba: tarmoq\nChorshanba: skriptlar\n","eslatma.txt":"Parollarni menejerda saqlash kerak\n",
+ arxiv:{2019:{"kalit.txt":"KOD: ZULMAT-42\nBu faylni hech kim topmaydi deb o'ylagandim.\n","eski.txt":"eski ma'lumotlar\n"},2020:{"bosh.txt":"bo'sh fayl\n"}}},
+ish:{"guvohlar.txt":"Guvoh 1 (Dilnoza): Qora kepkali erkakni ko'rdim.\nGuvoh 2 (Ravshan): Ko'k mashina juda tez ketdi, raqami 01A777AA edi.\nGuvoh 3 (Malika): Men hech narsa ko'rmadim.\n",
+"mashinalar.txt":"01A123AA Dilshod Rahimov\n01A555BB Nodira Yusupova\n01A777AA Sardor Karimov\n01B777AA Umid Tursunov\n01A999CC Gulnora Ahmedova\n"}}},
+etc:{hosts:"127.0.0.1 localhost\n127.0.1.1 kali\n",passwd:"root:x:0:0:root:/root:/bin/bash\nkali:x:1000:1000:kali:/home/kali:/bin/bash\n"},
+var:{log:{"server.log":"2026-11-01 09:12:01 INFO server started\n2026-11-01 09:14:22 INFO user ali logged in\n2026-11-01 09:20:45 WARN disk usage 81%\n2026-11-01 10:30:09 ERROR cannot reach db\n2026-11-01 11:47:30 ALERT root login from 185.23.9.14\n2026-11-01 11:48:02 INFO backup finished\n2026-11-01 12:15:55 INFO user ali logged out\n"}},
+tmp:{}});
+const mkTerm=()=>({fs:FS0(),cwd:['home','kali']});
+const isDir=n=>n!==null&&typeof n==='object';
+function res(t,p){let a=p.startsWith('/')?[]:[...t.cwd];for(const s of p.split('/')){if(!s||s==='.')continue;if(s==='..')a.pop();else if(s==='~')a=['home','kali'];else a.push(s)}return a}
+function nd(t,a){let n=t.fs;for(const k of a){if(!isDir(n)||!(k in n))return undefined;n=n[k]}return n}
+function pf(a){const fl=new Set(),pos=[];a.forEach(x=>{if(/^-[a-zA-Z]+$/.test(x))for(const ch of x.slice(1))fl.add(ch);else pos.push(x)});return{fl,pos}}
+const nl=s=>s.replace(/\n$/,'').split('\n');
+function glob(t,x){const i=x.lastIndexOf('/'),dir=x.slice(0,i+1),b=x.slice(i+1),n=nd(t,res(t,dir||'.'));if(!isDir(n))return[x];const re=new RegExp('^'+b.replace(/[.+^${}()|\\]/g,'\\$&').replace(/\*/g,'.*').replace(/\?/g,'.')+'$'),r=Object.keys(n).sort().filter(k=>re.test(k)&&(k[0]!=='.'||b[0]==='.'));return r.length?r.map(k=>dir+k):[x]}
+const permOf=(t,k,d)=>(t.modes&&t.modes[k])||(d?'drwxr-xr-x':'-rw-r--r--');
+function exec(t,seg,inp,last){
+ let tk=[];(seg.match(/"[^"]*"|'[^']*'|\S+/g)||[]).forEach(x=>{if(/^(".*"|'.*')$/.test(x)){tk.push(x.slice(1,-1));return}const mm=x.match(/^(.*)\{([^{}]+)\}(.*)$/);if(mm&&mm[2].includes(','))mm[2].split(',').forEach(v=>tk.push(mm[1]+v+mm[3]));else tk.push(x)});
+ if(!tk.length)return '';
+ if(/^(ls|cat|rm|cp|mv|head|tail|wc|sort)$/.test(tk[0]))tk=tk.flatMap((x,i)=>i&&/[*?\[]/.test(x)&&x[0]!=='-'?glob(t,x):[x]);
+ const c=tk[0],a=tk.slice(1),{fl,pos}=c==='chmod'?{fl:new Set(),pos:[]}:pf(a);
+ const ft=p=>{const n=nd(t,res(t,p));return n===undefined?null:isDir(n)?false:n};
+ const ent=p=>{const r=res(t,p),name=r.pop();return{name,par:nd(t,r)}};
+ switch(c){
+ case 'help':return "Buyruqlar: ls cd pwd cat less mkdir rmdir touch rm cp mv echo grep head tail wc sort find tree chmod file stat man hostname date history sudo whoami id uname clear\nPipe (|) va yo'naltirish (> >>) ishlaydi.";
+ case 'pwd':return '/'+t.cwd.join('/');
+ case 'hostname':return 'kali';
+ case 'date':return new Date().toString();
+ case 'history':return TM.hist.map((h,i)=>String(i+1).padStart(4)+'  '+h).join('\n');
+ case 'sudo':if(!a.length)return 'usage: sudo command';return /^(apt|adduser|usermod|deluser|chown|-i)/.test(a[0])?`[sudo] ${a.join(' ')}: simulyatsiya, sandbox'da bajarilmadi`:exec(t,a.join(' '),inp,last);
+ case 'man':{const q=ALL.find(z=>z[0]===a[0]);return q?`${q[0].toUpperCase()}(1)\n\n${q[1]}\n\nMISOL: ${q[2]}`:a[0]?`No manual entry for ${a[0]}`:'What manual page do you want?'}
+ case 'rmdir':return pos.map(p=>{const{name,par}=ent(p);if(!isDir(par)||!(name in par))return `rmdir: failed to remove '${p}': No such file or directory`;if(!isDir(par[name]))return `rmdir: failed to remove '${p}': Not a directory`;if(Object.keys(par[name]).length)return `rmdir: failed to remove '${p}': Directory not empty`;delete par[name];return ''}).filter(Boolean).join('\n');
+ case 'file':return pos.map(p=>{const n=nd(t,res(t,p));return n===undefined?`${p}: cannot open (No such file or directory)`:isDir(n)?`${p}: directory`:`${p}: ${n.startsWith('#!')?'script, ASCII text executable':'ASCII text'}`}).join('\n');
+ case 'stat':return pos.map(p=>{const r=res(t,p),n=nd(t,r);return n===undefined?`stat: cannot statx '${p}': No such file or directory`:`  File: ${p}\n  Size: ${isDir(n)?4096:n.length}\t${isDir(n)?'directory':'regular file'}\nAccess: (${permOf(t,'/'+r.join('/'),isDir(n))})  Uid: (1000/kali)`}).join('\n');
+ case 'less':return exec(t,'cat '+a.join(' '),inp,last);
+ case 'tree':{let L=99,st='.';for(let i=0;i<a.length;i++){if(a[i]==='-L')L=+a[++i]||99;else if(a[i][0]!=='-')st=a[i]}const n0=nd(t,res(t,st));if(!isDir(n0))return `${st} [error opening dir]`;const out=[st];(function w(n,pre,d){if(d>L)return;const k=Object.keys(n).sort().filter(x=>x[0]!=='.');k.forEach((x,i)=>{const l=i===k.length-1;out.push(pre+(l?'└── ':'├── ')+x);if(isDir(n[x]))w(n[x],pre+(l?'    ':'│   '),d+1)})})(n0,'',1);return out.join('\n')}
+ case 'chmod':{const mode=a[0],fl2=a.slice(1);if(!mode||!fl2.length)return 'chmod: missing operand';return fl2.map(p=>{const r=res(t,p),n=nd(t,r);if(n===undefined)return `chmod: cannot access '${p}': No such file or directory`;const key='/'+r.join('/'),d=isDir(n);let nw=permOf(t,key,d).slice(1).split('');
+  if(/^[0-7]{3}$/.test(mode))nw=[...mode].map(x=>'rwx'.split('').map((l,j)=>(+x&(4>>j))?l:'-').join('')).join('').split('');
+  else{const good=mode.split(',').every(cl=>{const m2=cl.match(/^([ugoa]*)([-+=])([rwx]*)$/);if(!m2)return false;const who=m2[1]||'a',idx=[...who].flatMap(w=>w==='a'?[0,1,2]:[{u:0,g:1,o:2}[w]]);idx.forEach(g=>[...'rwx'].forEach((l,j)=>{const q=g*3+j;if(m2[3].includes(l))nw[q]=m2[2]==='-'?'-':l;else if(m2[2]==='=')nw[q]='-'}));return true});if(!good)return `chmod: invalid mode: '${mode}'`}
+  t.modes=t.modes||{};t.modes[key]=(d?'d':'-')+nw.join('');return ''}).filter(Boolean).join('\n')}
+ case 'whoami':return 'kali';
+ case 'id':return 'uid=1000(kali) gid=1000(kali) groups=1000(kali),27(sudo)';
+ case 'uname':return 'Linux kali 6.8.0-kali x86_64 GNU/Linux';
+ case 'echo':return a.join(' ');
+ case 'ls':{if(pos.length>1){const fo=[...fl].length?'-'+[...fl].join('')+' ':'',ex=q=>nd(t,res(t,q)),F=pos.filter(q=>ex(q)!==undefined&&!isDir(ex(q))),Dd=pos.filter(q=>isDir(ex(q))),out=[];if(F.length)out.push(F.map(q=>exec(t,'ls '+fo+q,inp,true)).join(fl.has('l')?'\n':last?'  ':'\n'));Dd.forEach(q=>out.push(q+':\n'+exec(t,'ls '+fo+q,inp,last)));pos.filter(q=>ex(q)===undefined).forEach(q=>out.push(`ls: cannot access '${q}': No such file or directory`));return out.join('\n\n')}
+  const p=pos[0]||'.',n=nd(t,res(t,p));if(n===undefined)return `ls: cannot access '${p}': No such file or directory`;if(!isDir(n))return fl.has('l')?`${permOf(t,'/'+res(t,p).join('/'),false)} 1 kali kali ${String(n.length).padStart(5)} ${p}`:p;
+  let nm=Object.keys(n).sort();if(!fl.has('a'))nm=nm.filter(x=>x[0]!=='.');else nm=['.','..',...nm];
+  if(fl.has('l')){const bs='/'+res(t,p).join('/');return nm.map(x=>{const v=n[x],d=x==='.'||x==='..'||isDir(v);return `${permOf(t,(bs==='/'?'':bs)+'/'+x,d)} 1 kali kali ${String(d?4096:(v||'').length).padStart(5)} ${x}`}).join('\n')}
+  return nm.join(last?'  ':'\n')}
+ case 'cd':{const p=pos[0]==='-'?'/'+(t.old||t.cwd).join('/'):pos[0]||'~',r=res(t,p),n=nd(t,r);if(n===undefined)return `bash: cd: ${p}: No such file or directory`;if(!isDir(n))return `bash: cd: ${p}: Not a directory`;t.old=t.cwd;t.cwd=r;return pos[0]==='-'?'/'+r.join('/'):''}
+ case 'cat':if(!pos.length)return inp||'';return pos.map(p=>{const f=ft(p);return f===null?`cat: ${p}: No such file or directory`:f===false?`cat: ${p}: Is a directory`:f.replace(/\n$/,'')}).join('\n');
+ case 'mkdir':return pos.map(p=>{const r=res(t,p),name=r.pop(),par=nd(t,r),v=fl.has('v')?`mkdir: created directory '${p}'`:'';
+  if(fl.has('p')){let cur=t.fs;for(const k of [...r,name]){if(!(k in cur))cur[k]={};else if(!isDir(cur[k]))return `mkdir: cannot create directory '${p}': Not a directory`;cur=cur[k]}return v}
+  if(!isDir(par))return `mkdir: cannot create directory '${p}': No such file or directory`;if(name in par)return `mkdir: cannot create directory '${p}': File exists`;par[name]={};return v}).filter(Boolean).join('\n');
+ case 'touch':return pos.map(p=>{const{name,par}=ent(p);if(!isDir(par))return `touch: cannot touch '${p}': No such file or directory`;if(!(name in par))par[name]='';return ''}).filter(Boolean).join('\n');
+ case 'rm':return pos.map(p=>{const{name,par}=ent(p);if(!isDir(par)||!(name in par))return fl.has('f')?'':`rm: cannot remove '${p}': No such file or directory`;if(isDir(par[name])&&!fl.has('r')&&!fl.has('R'))return `rm: cannot remove '${p}': Is a directory`;delete par[name];return ''}).filter(Boolean).join('\n');
+ case 'cp':case 'mv':{if(pos.length<2)return `${c}: missing file operand`;const[s,d]=pos,sr=res(t,s),sn=sr.pop(),sp=nd(t,sr);
+  if(!isDir(sp)||!(sn in sp))return `${c}: cannot stat '${s}': No such file or directory`;const v=sp[sn];
+  if(c==='cp'&&isDir(v)&&!fl.has('r')&&!fl.has('R'))return `cp: -r not specified; omitting directory '${s}'`;
+  const dr=res(t,d),dn=nd(t,dr);let tg,name;if(isDir(dn)){tg=dn;name=sn}else{name=dr.pop();tg=nd(t,dr);if(!isDir(tg))return `${c}: cannot create '${d}': No such file or directory`}
+  if(tg===sp&&name===sn)return '';tg[name]=c==='cp'?JSON.parse(JSON.stringify(v)):v;if(c==='mv')delete sp[sn];return ''}
+ case 'grep':{if(!pos.length)return 'Usage: grep [OPTION]... PATTERN [FILE]...';const pat=pos[0],fi=fl.has('i')?'i':'',files=pos.slice(1),out=[];let re;try{re=new RegExp(pat,fi)}catch(e){re=new RegExp(pat.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),fi)}
+  const scan=(tx,lb)=>{let n=0;nl(tx).forEach((l,i)=>{if(re.test(l)!==fl.has('v')){n++;if(!fl.has('c'))out.push((lb?lb+':':'')+(fl.has('n')?(i+1)+':':'')+l)}});if(fl.has('c'))out.push((lb?lb+':':'')+n)};
+  const walk=(n,p)=>{if(isDir(n))Object.keys(n).sort().forEach(k=>walk(n[k],p+'/'+k));else scan(n,p)};
+  if(!files.length){if(fl.has('r'))walk(nd(t,t.cwd),'.');else if(inp!=null)scan(inp,'');else out.push('grep: fayl yoki pipe kerak')}
+  else files.forEach(p=>{const n=nd(t,res(t,p));if(n===undefined)out.push(`grep: ${p}: No such file or directory`);else if(isDir(n)){if(fl.has('r'))walk(n,p.replace(/\/$/,''));else out.push(`grep: ${p}: Is a directory`)}else scan(n,files.length>1?p:'')});
+  return out.join('\n')}
+ case 'head':case 'tail':{let n=10,f=null;for(let i=0;i<a.length;i++){if(a[i]==='-n')n=parseInt(a[++i]);else if(/^-\d+$/.test(a[i]))n=-parseInt(a[i]);else if(!a[i].startsWith('-'))f=a[i]}if(isNaN(n))n=10;
+  let tx=inp;if(f!==null){const x=ft(f);if(x===null)return `${c}: cannot open '${f}' for reading: No such file or directory`;tx=x||''}if(tx==null)return '';const l=nl(tx);return(c==='head'?l.slice(0,n):l.slice(-n)).join('\n')}
+ case 'wc':{let tx=inp,lb='';if(pos[0]){const x=ft(pos[0]);if(x===null)return `wc: ${pos[0]}: No such file or directory`;tx=x||'';lb=' '+pos[0]}if(tx==null)tx='';
+  const l=(tx.match(/\n/g)||[]).length+(tx&&!tx.endsWith('\n')?1:0),w=tx.trim()?tx.trim().split(/\s+/).length:0;
+  return fl.has('l')?l+lb:fl.has('w')?w+lb:fl.has('c')?tx.length+lb:`${l} ${w} ${tx.length}${lb}`}
+ case 'sort':{let tx=inp;if(pos[0]){const x=ft(pos[0]);if(x===null)return `sort: cannot read: ${pos[0]}: No such file or directory`;tx=x||''}if(tx==null)return '';
+  let l=nl(tx);if(fl.has('u'))l=[...new Set(l)];l.sort(fl.has('n')?(x,y)=>parseFloat(x)-parseFloat(y):(x,y)=>x<y?-1:x>y?1:0);if(fl.has('r'))l.reverse();return l.join('\n')}
+ case 'find':{let st='.',nm=null,ty=null;for(let i=0;i<a.length;i++){if(a[i]==='-name')nm=a[++i];else if(a[i]==='-type')ty=a[++i];else if(!a[i].startsWith('-'))st=a[i]}
+  const sn=nd(t,res(t,st));if(sn===undefined)return `find: '${st}': No such file or directory`;
+  const re=nm?new RegExp('^'+nm.replace(/[.+^${}()|[\]\\]/g,'\\$&').replace(/\*/g,'.*').replace(/\?/g,'.')+'$'):null,out=[];
+  const walk=(n,p,b)=>{const d=isDir(n);if((!re||re.test(b))&&(!ty||(ty==='d')===d))out.push(p);if(d)Object.keys(n).sort().forEach(k=>walk(n[k],(p==='/'?'':p)+'/'+k,k))};
+  walk(sn,st.replace(/(.)\/$/,'$1'),st.split('/').filter(Boolean).pop()||'');return out.join('\n')}
+ default:if(c.startsWith('./')){const r=res(t,c),n=nd(t,r);if(n===undefined)return `bash: ${c}: No such file or directory`;if(isDir(n))return `bash: ${c}: Is a directory`;if(permOf(t,'/'+r.join('/'),false)[3]!=='x')return `bash: ${c}: Permission denied`;return n.split('\n').filter(Boolean).map(l=>run(t,l)).join('\n')}return `${c}: command not found (sandbox'da faqat fayl buyruqlari bor, 'help' yozing)`}}
+function run(t,line){const m=line.match(/^(.*?)\s*(>>?)\s*(\S+)\s*$/);let tg=null,ap=false;if(m&&!/["'][^"']*>[^"']*["']/.test(line)){line=m[1];ap=m[2]==='>>';tg=m[3]}
+ const sg=line.split('|');let inp=null;sg.forEach((s,i)=>{inp=exec(t,s.trim(),inp,i===sg.length-1&&tg===null)});
+ if(tg!==null){const r=res(t,tg),name=r.pop(),par=nd(t,r);if(!isDir(par))return `bash: ${tg}: No such file or directory`;par[name]=(ap&&typeof par[name]==='string'?par[name]:'')+inp+'\n';return ''}
+ return inp==null?'':inp}
+
+/* ---------- Missiyalar ---------- */
+const M=[
+{t:"Yo'qolgan kalit",s:"Kimdir maxfiy kalit.txt faylini yashirgan. U kompyuterning qaysidir papkasida. Toping va ichidagi KOD ni yozing.",h:"find / -name kalit.txt, so'ng cat bilan o'qing.",k:'zulmat-42'},
+{t:"Server hujumi",s:"Server jurnali /var/log/server.log da. Kimdir root sifatida kirishga urinmoqda (ALERT). Hujumchining IP manzilini toping.",h:"grep ALERT /var/log/server.log",k:'185.23.9.14'},
+{t:"Detektiv",s:"Tunda do'kon o'g'irlandi. Guvohlar ko'k mashinani ko'rgan. ish/ papkasida guvohlar.txt va mashinalar.txt bor. Guvohlardan raqamni toping, keyin egasini qidiring. Javob: egasining familiyasi.",h:"cat guvohlar.txt, so'ng grep RAQAM mashinalar.txt (raqamni to'liq yozing)",k:'karimov'}];
+let TM={t:mkTerm(),m:null,hint:false,log:[{o:"Kali sandbox: xavfsiz mashq muhiti. 'help' deb yozing."}],hist:[],hi:0};
+const ps1=()=>{const h=['home','kali'],c=TM.t.cwd,inH=h.every((x,i)=>c[i]===x);return 'kali@kali:'+(inH?'~'+(c.length>2?'/'+c.slice(2).join('/'):''):'/'+c.join('/'))+'$'};
+function termView(){
+ const b=(i,x)=>`<button class="${TM.m===i?'p':''}" onclick="selM(${i})">${x}${i!==null&&S.missions[i]?' ✓':''}</button>`;
+ let h=`<p>${b(null,'Erkin')}${M.map((m,i)=>b(i,'Missiya '+(i+1))).join('')}</p>`;
+ if(TM.m!==null){const m=M[TM.m];h+=`<div class="card"><b>${m.t}</b> (+50 XP)<p>${esc(m.s)}</p><button onclick="TM.hint=!TM.hint;render()">Maslahat</button>${TM.hint?`<pre>${esc(m.h)}</pre>`:''}<input type="text" id="man" placeholder="Javob..." autocomplete="off"><button class="p" onclick="chkM()">Javobni tekshirish</button></div>`}
+ return h+`<div id="tlog"></div><div class="term"><span id="tp"></span><input id="tin" autocomplete="off" autocapitalize="off" spellcheck="false" onkeydown="termKey(event)"></div><p><button onclick="TM.t=mkTerm();TM.log=[];render()">Muhitni tiklash</button></p>`}
+function logPaint(){$('#tlog').innerHTML=TM.log.map(e=>(e.l!==undefined?`<div><span class="pr">${esc(e.p)}</span> ${esc(e.l)}</div>`:'')+(e.o?`<div class="o">${esc(e.o)}</div>`:'')).join('');$('#tlog').scrollTop=1e9;$('#tp').textContent=ps1()}
+function termKey(e){const el=$('#tin');
+ if(e.key==='ArrowUp'&&TM.hi>0){el.value=TM.hist[--TM.hi]}else if(e.key==='ArrowDown'&&TM.hi<TM.hist.length-1){el.value=TM.hist[++TM.hi]}
+ else if(e.key==='Enter'){const l=el.value;el.value='';if(!l.trim())return;TM.hist.push(l);TM.hi=TM.hist.length;
+  if(l.trim()==='clear')TM.log=[];else{const p=ps1();TM.log.push({p,l,o:run(TM.t,l)})}logPaint()}}
+function selM(i){TM.m=i;TM.hint=false;render()}
+function chkM(){const m=M[TM.m],v=$('#man').value.toLowerCase();
+ if(v.includes(m.k)){if(!S.missions[TM.m]){S.missions[TM.m]=1;addXP(50);act();save();head()}toast("To'g'ri! Missiya bajarildi");render()}else toast("Noto'g'ri, yana urinib ko'ring")}
+
+/* ---------- Darslar ---------- */
+let tagF=null,query='',addOpen=false,TAGL=[];
+const ctags=c=>c[3]||[];
+const hit=(c,s)=>(c[0].toLowerCase().includes(s)||c[1].toLowerCase().includes(s)||ctags(c).some(x=>x.includes(s)))&&(!tagF||(tagF==='sevimli'?S.fav.includes(c[0]):ctags(c).includes(tagF)));
+const addForm=()=>`<div class="card"><input type="text" id="cn" placeholder="Buyruq (masalan: nmap -sn)"><br><br><input type="text" id="cd" placeholder="Tavsif (nima qiladi)"><br><br><input type="text" id="ce" placeholder="Namuna (ixtiyoriy)"><br><br><input type="text" id="ct" placeholder="Teglar, probel bilan (masalan: tarmoq skaner)"><p><button class="p" onclick="addC()">Saqlash</button></p></div>`;
+function lessonsCmd(){TAGL=['sevimli',...new Set(ALL.flatMap(ctags))];
+ return `<input type="text" placeholder="Qidirish (nom, tavsif yoki teg)..." value="${esc(query)}" oninput="query=this.value;lessonsList()"><p id="chips"></p><button onclick="addOpen=!addOpen;render()">${addOpen?'Yopish':"+ O'z buyrug'im"}</button>${addOpen?addForm():''}<div id="list"></div><div id="detail"></div>`}
+function chips(){$('#chips').innerHTML=`<button class="chip ${tagF?'':'on'}" onclick="setTag(-1)">hammasi</button>`+TAGL.map((t,i)=>`<button class="chip ${tagF===t?'on':''}" onclick="setTag(${i})">${t==='sevimli'?'★ ':''}${esc(t)}</button>`).join('')}
+function setTag(i){tagF=i<0||tagF===TAGL[i]?null:TAGL[i];lessonsList()}
+function lessonsList(){chips();const s=query.toLowerCase().trim();
+ const G=[...Object.entries(DATA),...(S.custom.length?[["Mening buyruqlarim",S.custom]]:[])];
+ $('#list').innerHTML=G.map(([k,v])=>{const it=v.filter(c=>hit(c,s));if(!it.length)return '';
+  return `<details ${s||tagF?'open':''}><summary>${esc(k)}</summary>${it.map(c=>`<div class="item" onclick="detail(${ALL.indexOf(c)})"><span class="mono">${S.fav.includes(c[0])?'★ ':''}${esc(c[0])}</span><small>${esc(c[1])} · #${ctags(c).map(x=>esc(x)).join(' #')}</small></div>`).join('')}</details>`}).join('')||'<p class="right">Hech narsa topilmadi</p>'}
+function detail(i){const c=ALL[i],f=S.fav.includes(c[0]),my=S.custom.includes(c);
+ $('#detail').innerHTML=`<div class="card"><div class="mono" style="font-size:22px">${esc(c[0])}</div><p>${esc(c[1])}</p><pre>$ ${esc(c[2])}</pre><button class="p" onclick="copy(ALL[${i}][2])">Nusxalash</button><button onclick="fav(${i})">${f?'★ Sevimlidan olish':'☆ Sevimli'}</button>${OPT[c[0]]?`<button onclick="openOpt('${c[0]}')">Opsiyalarni o'rganish</button>`:''}${my?`<button onclick="delC(${i})">O'chirish</button>`:''}</div>`;
+ $('#detail').scrollIntoView({behavior:'smooth'})}
+function fav(i){const n=ALL[i][0],k=S.fav.indexOf(n);if(k<0)S.fav.push(n);else S.fav.splice(k,1);save();lessonsList();detail(i)}
+function addC(){const n=$('#cn').value.trim(),d=$('#cd').value.trim();if(!n||!d){toast('Buyruq va tavsifni yozing');return}
+ const e=$('#ce').value.trim()||n,t=[...new Set($('#ct').value.toLowerCase().split(/[\s,#]+/).filter(Boolean).concat('mening'))];
+ S.custom.push([n,d,e,t]);save();rebuild();addOpen=false;toast("Buyruq qo'shildi");render()}
+function delC(i){const k=S.custom.indexOf(ALL[i]);if(k>=0)S.custom.splice(k,1);save();rebuild();render()}
+
+
+/* ---------- Kitob ---------- */
+const BOOK=[
+{t:"Terminal bilan tanishuv",b:[
+["h3","Terminalni ochish"],
+["ul",["Kali (XFCE): `Ctrl + Alt + T` yoki menyudan Terminal Emulator.","Ubuntu: `Ctrl + Alt + T`.","Windows: Microsoft Store'dan WSL va Ubuntu o'rnating, so'ng Ubuntu'ni oching."]],
+["h3","Prompt: buyruq satrini o'qish"],
+["code",`kali@kali:~$ _
+ |    |   |  |
+ |    |   |  +-- $ oddiy foydalanuvchi (root bo'lsa # bo'ladi)
+ |    |   +----- ~ hozirgi papka (~ = uy papkangiz)
+ |    +--------- kompyuter nomi
+ +-------------- foydalanuvchi nomi`],
+["p","Buyruq yozib, `Enter` bosasiz. Bu kitobda promptni qisqa `$` bilan ko'rsatamiz."],
+["h3","Birinchi buyruqlar"],
+["code",`$ whoami            # men kimman
+kali
+$ hostname          # kompyuter nomi
+kali
+$ date              # sana va vaqt
+$ pwd               # hozir qaysi papkadaman
+/home/kali
+$ echo Salom        # matn chiqarish
+Salom
+$ clear             # ekranni tozalash (yoki Ctrl+L)`],
+["h3","Buyruq tuzilishi"],
+["code",`buyruq  [opsiyalar]  [argumentlar]
+
+ls  -l  /etc
+|   |   +-- argument: nimaga qo'llanadi
+|   +------ opsiya: qanday ishlashi
++---------- buyruq: nima qilish`],
+["p","Opsiyalar qisqa (`-l`) yoki uzun (`--all`) bo'ladi. Qisqa opsiyalarni birlashtirish mumkin: `ls -l -a` bilan `ls -la` bir xil."],
+["h3","Yordam olish: eng muhim ko'nikma"],
+["tbl",["Buyruq","Vazifasi"],[["`man ls`","To'liq qo'llanma. `q` bilan chiqing, `/so'z` bilan qidiring"],["`ls --help`","Qisqa yordam (ko'p buyruqlarda)"],["`whatis ls`","Bir qatorli tavsif"],["`apropos nusxa`","Kalit so'z bo'yicha buyruq qidirish"],["`type cd`","Buyruq turini ko'rsatish (o'rnatilgan yoki dastur)"]]],
+["tip","Maslahat","Tushunmagan buyruq uchradimi, avval `man` yoki `--help` ni o'qing. Professional foydalanuvchilar ham shunday qiladi."],
+["h3","Tab va tarix"],
+["ul",["`Tab`: buyruq yoki fayl nomini avtomatik to'ldiradi. Ikki marta bossangiz variantlar chiqadi.","`↑` va `↓`: oldingi buyruqlarni qaytarish.","`history`: buyruqlar tarixini ko'rsatish. `!!` oxirgi buyruqni takrorlaydi, `Ctrl + R` tarixdan qidiradi."]],
+["ex","Mashq: Birinchi daqiqalar",["Terminal oching va `whoami`, `hostname`, `date` ni yozing.","`ech` yozib `Tab` bosing, `echo` ga to'lishini ko'ring.","`man ls` ni oching, pastga `Space` bilan o'ting, `q` bilan chiqing.","`history` yozib, oxirgi buyruqlaringizni ko'ring."]]
+]},
+{t:"3. Fayl tizimi va harakatlanish",b:[
+["p","Linux'da disk harflari (`C:`) yo'q. Hamma narsa bitta daraxtda, uning ildizi `/` (root). Har bir fayl va papkaning o'z **yo'li** (path) bor."],
+["h3","Asosiy papkalar"],
+["tbl",["Papka","Nima saqlanadi"],[["`/`","Ildiz papka, daraxtning boshi"],["`/home`","Foydalanuvchilarning shaxsiy papkalari (masalan, /home/kali)"],["`/root`","root foydalanuvchining shaxsiy papkasi"],["`/etc`","Tizim va dasturlarning sozlama fayllari"],["`/var/log`","Tizim jurnallari (loglar)"],["`/tmp`","Vaqtincha fayllar"],["`/usr/bin`","Dasturlar (buyruqlar shu yerda)"],["`/dev`","Qurilmalar fayl ko'rinishida"],["`/proc`","Jarayonlar haqida jonli ma'lumot"]]],
+["h3","Yo'llar"],
+["ul",["**Absolyut yo'l** ildizdan boshlanadi: `/home/kali/Desktop`.","**Nisbiy yo'l** hozirgi papkadan boshlanadi: `Desktop/fayl.txt`.","`.` hozirgi papka, `..` bir daraja yuqori, `~` uy papkangiz, `-` oldingi papka."]],
+["h3","ls: ko'rish"],
+["code",`$ ls               # oddiy ro'yxat
+$ ls -l            # batafsil (huquqlar, egasi, o'lcham, sana)
+$ ls -a            # yashirin fayllar bilan (nomi nuqta bilan boshlanadi)
+$ ls -la           # ikkalasi birga
+$ ls -lh           # o'lchamlar o'qiladigan ko'rinishda (KB, MB)
+$ ls -lt           # yangi o'zgartirilgan birinchi
+$ ls /etc          # boshqa papka tarkibi`],
+["h3","cd: o'tish"],
+["code",`$ cd /etc          # absolyut yo'l bilan
+$ cd ..            # bir daraja yuqoriga
+$ cd ~             # uy papkasiga (yoki oddiy "cd")
+$ cd -             # oldingi papkaga qaytish
+$ cd Desktop       # nisbiy yo'l bilan
+$ pwd              # qayerdaman?`],
+["p","Nomida bo'shliq bor papka uchun qo'shtirnoq ishlating: `cd \"Mening papkam\"` yoki bo'shliqdan oldin teskari chiziq: `cd Mening\\ papkam`. Eng oson yo'l: `Tab` bilan to'ldirish."],
+["h3","tree: daraxt ko'rinishi"],
+["code",`$ sudo apt install tree
+$ tree -L 2 ~       # uy papkasi, 2 daraja chuqurlikda`],
+["ex","Mashq: Sayohat",["`cd /` ga o'ting va `ls` bilan ko'ring. Yuqoridagi jadvaldagi papkalarni toping.","`cd /etc` ga o'tib, `ls | head` ni yozing.","`cd ~` bilan uyga qayting va `ls -la` bilan yashirin fayllarni toping (`.bashrc`).","`cd /var/log`, so'ng `cd -` bilan oldingi papkaga qayting."]]
+]},
+{t:"4. Fayl va papkalar bilan ishlash",b:[
+["h3","Yaratish"],
+["code",`$ mkdir lab                  # papka yaratish
+$ mkdir -p lab/test/a        # ichma-ich papkalarni birdaniga yaratish
+$ touch fayl.txt             # bo'sh fayl yaratish
+$ echo "salom" > salom.txt   # matnli fayl yaratish`],
+["h3","Nusxalash, ko'chirish, nomini o'zgartirish"],
+["code",`$ cp fayl.txt nusxa.txt      # fayl nusxasi
+$ cp -r lab lab_zaxira       # papkani ichi bilan nusxalash (-r)
+$ mv nusxa.txt yangi.txt     # nomini o'zgartirish
+$ mv yangi.txt lab/          # papkaga ko'chirish`],
+["p","`mv` bir buyruq bilan ham ko'chiradi, ham nomini o'zgartiradi."],
+["h3","O'chirish"],
+["code",`$ rm fayl.txt                # faylni o'chirish
+$ rm -i fayl.txt             # o'chirishdan oldin so'rash
+$ rmdir bosh_papka           # faqat BO'SH papkani o'chirish
+$ rm -r lab_zaxira           # papkani ichi bilan o'chirish`],
+["warn","Diqqat: terminalda savat yo'q","`rm` dan o'chirilgan fayl qaytmaydi. `rm -r` papkani butunlay o'chiradi. Hech qachon `rm -rf /` yoki `rm -rf ~` kabi buyruqlarni yozmang va internetdan nusxalangan buyruqni tushunmasdan bajarmang. Shubha bo'lsa, avval `ls` bilan nimani o'chirishingizni ko'ring."],
+["h3","Fayl ichini ko'rish"],
+["tbl",["Buyruq","Vazifasi"],[["`cat fayl`","Butun faylni chiqaradi (qisqa fayllar uchun)"],["`less fayl`","Sahifalab ko'rish. Space: keyingi sahifa, /so'z: qidirish, q: chiqish"],["`head -n 5 fayl`","Birinchi 5 qator"],["`tail -n 5 fayl`","Oxirgi 5 qator"],["`tail -f log`","Yangi qatorlarni jonli kuzatish (Ctrl+C bilan to'xtatish)"],["`wc -l fayl`","Qatorlarni sonini sanash"],["`file fayl`","Fayl turini aniqlash (matn, rasm, dastur)"],["`stat fayl`","Fayl haqida to'liq ma'lumot"]]],
+["h3","Wildcard: shablon belgilar"],
+["tbl",["Belgi","Ma'nosi","Misol"],[["`*`","Istalgan belgilar (hech bo'lmasa ham)","ls *.txt: barcha txt fayllar"],["`?`","Aynan bitta belgi","ls fayl?.txt: fayl1.txt, faylA.txt"],["`[abc]`","Qavs ichidagi bitta belgi","ls fayl[12].txt"],["`{a,b}`","Variantlar ro'yxati","touch {a,b,c}.txt: uchta fayl yaratadi"]]],
+["ex","Mashq: Ish papkasi",["`mkdir -p ~/lab/hujjatlar` va `cd ~/lab/hujjatlar` ni bajaring.","`touch {a,b,c}.txt` bilan uchta fayl yarating, `ls` bilan tekshiring.","`echo \"birinchi qator\" > a.txt`, so'ng `echo \"ikkinchi qator\" >> a.txt` va `cat a.txt`.","`cp a.txt zaxira.txt`, so'ng `mv zaxira.txt ..` bilan bir daraja yuqoriga ko'chiring.","`rm -i b.txt` bilan faylni so'rab o'chiring."]]
+]},
+{t:"5. Fayl huquqlari va foydalanuvchilar",b:[
+["h3","Huquqlarni o'qish"],
+["code",`$ ls -l skript.sh
+-rwxr-xr-- 1 kali users 120 Oct 12 10:00 skript.sh
+|\\_/\\_/\\_/
+| |  |  +-- boshqalar (others): r--  faqat o'qish
+| |  +----- guruh (group):      r-x  o'qish va bajarish
+| +-------- egasi (owner):      rwx  o'qish, yozish, bajarish
++---------- tur: - fayl, d papka, l havola`],
+["tbl",["Harf","Raqam","Fayl uchun","Papka uchun"],[["`r`","4","O'qish","Ichidagilar ro'yxatini ko'rish"],["`w`","2","Yozish, o'zgartirish","Ichida fayl yaratish va o'chirish"],["`x`","1","Dastur sifatida bajarish","Ichiga kirish (cd)"]]],
+["h3","chmod: huquqlarni o'zgartirish"],
+["p","Raqamli usul: uchta raqam (egasi, guruh, boshqalar). Raqamlar qo'shiladi: `rwx` = 4+2+1 = 7, `r-x` = 5, `r--` = 4."],
+["code",`$ chmod 755 skript.sh     # egasi rwx, boshqalar r-x (dasturlar uchun odatiy)
+$ chmod 644 hujjat.txt    # egasi rw-, boshqalar r-- (oddiy fayl)
+$ chmod 600 maxfiy.txt    # faqat egasi o'qiydi va yozadi
+$ chmod +x skript.sh      # bajariladigan qilish
+$ chmod -w hujjat.txt     # yozishni olib tashlash
+$ chmod u+x,g-w fayl      # u=egasi, g=guruh, o=boshqalar, a=hammasi`],
+["h3","chown: egasini o'zgartirish"],
+["code",`$ sudo chown kali:kali fayl.txt     # egasi va guruhini belgilash
+$ sudo chown -R kali: papka         # papka ichi bilan`],
+["h3","Foydalanuvchilar, root va sudo"],
+["ul",["`root`: tizimning to'liq huquqli administratori. Undan doimiy ishlash xavfli.","`sudo`: bitta buyruqni root huquqi bilan bajaradi. Parol so'raydi (yozayotganda belgilar ko'rinmaydi).","`whoami` kim ekaningizni, `id` guruhlaringizni ko'rsatadi.","`/etc/passwd`: foydalanuvchilar ro'yxati. `/etc/shadow`: parol xeshlari (faqat root o'qiy oladi)."]],
+["code",`$ sudo apt update           # root huquqi bilan
+$ sudo !!                   # oxirgi buyruqni sudo bilan qaytarish
+$ sudo -i                   # root sessiyasiga kirish (ehtiyot bo'ling, exit bilan chiqing)
+$ sudo adduser sinov        # yangi foydalanuvchi
+$ sudo usermod -aG sudo sinov   # sudo guruhiga qo'shish
+$ sudo deluser sinov        # foydalanuvchini o'chirish`],
+["ex","Mashq: Huquqlar laboratoriyasi",["`touch maxfiy.txt` yarating va `ls -l maxfiy.txt` bilan huquqlarni ko'ring.","`chmod 600 maxfiy.txt` ni bajaring va qayta tekshiring.","`echo 'echo Salom' > salom.sh` yozing, `./salom.sh` ni ishga tushirib ko'ring: ruxsat xatosi chiqadi.","`chmod +x salom.sh` dan keyin yana `./salom.sh` ni bajaring.","`id` va `cut -d: -f1 /etc/passwd` bilan foydalanuvchilarni ko'ring."]]
+]}
+];
+let lm='book',bkOpen=null;
+const ic=s=>esc(s).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+const codeHtml=s=>s.split('\n').map(l=>{const m=l.match(/^(\$ .*?\S)(\s{2,}#.*)$/);return m?esc(m[1])+'<span class="cmt">'+esc(m[2])+'</span>':esc(l)}).join('\n');
+const bkTotal=c=>BOOK[c].b.reduce((n,b)=>n+(b[0]==='ex'?b[2].length:0),0),bkDone=c=>Object.keys(S.bk).filter(k=>k.startsWith(c+'-')&&!k.endsWith('!')).length;
+function bkBlock(b,ci,bi){const t=b[0];
+ if(t==='h3')return `<h3>${ic(b[1])}</h3>`;
+ if(t==='p')return `<p>${ic(b[1])}</p>`;
+ if(t==='ul')return `<ul>${b[1].map(x=>`<li>${ic(x)}</li>`).join('')}</ul>`;
+ if(t==='code')return `<pre>${b[1].includes('$ ')?`<button class="cpy" onclick="bkCopy(${ci},${bi})">Nusxa</button>`:''}${codeHtml(b[1])}</pre>`;
+ if(t==='tbl')return `<div class="tw"><table><tr>${b[1].map(h=>`<th>${ic(h)}</th>`).join('')}</tr>${b[2].map(r=>`<tr>${r.map(c=>`<td>${ic(c)}</td>`).join('')}</tr>`).join('')}</table></div>`;
+ if(t==='tip'||t==='warn')return `<div class="${t}"><b>${ic(b[1])}</b>${ic(b[2])}</div>`;
+ if(t==='ex')return `<h4>${ic(b[1])}</h4><ol class="ex">${b[2].map((x,i)=>{const k=ci+'-'+bi+'-'+i;return `<li><label class="${S.bk[k]?'done':''}"><input type="checkbox" ${S.bk[k]?'checked':''} onchange="bkTick('${k}',this.checked)"> ${ic(x)}</label></li>`}).join('')}</ol>`;
+ return ''}
+function bookView(){if(bkOpen===null)return `<p class="mu">Kitob boblari. Mashqlarni terminalda (Terminal bo'limi) bajarib belgilang: har biri +5 XP.</p>`+BOOK.map((c,i)=>`<div class="card"><b style="font-size:17px">${esc(c.t)}</b><p class="mu">Mashqlar: ${bkDone(i)}/${bkTotal(i)}</p><button class="p" onclick="bkOpenCh(${i})">O'qish</button></div>`).join('');
+ const c=BOOK[bkOpen];return `<button onclick="bkOpen=null;render()">← Boblar</button><div class="bk card"><h2>${esc(c.t)}</h2>${c.b.map((b,bi)=>bkBlock(b,bkOpen,bi)).join('')}</div>`+(bkOpen<BOOK.length-1?`<button class="p" onclick="bkOpenCh(${bkOpen+1})">Keyingi bob →</button>`:'')}
+function bkOpenCh(i){bkOpen=i;render();scrollTo(0,0)}
+function bkTick(k,on){if(on){S.bk[k]=1;if(!S.bk[k+'!']){S.bk[k+'!']=1;addXP(5);act()}}else delete S.bk[k];save();head();render()}
+function bkCopy(ci,bi){copy(BOOK[ci].b[bi][1].split('\n').filter(l=>l.startsWith('$ ')).map(l=>l.slice(2).replace(/\s{2,}#.*$/,'')).join('\n'))}
+function lessons(){return `<p><button class="chip ${lm==='book'?'on':''}" onclick="lm='book';render()">📖 Kitob</button><button class="chip ${lm==='cmd'?'on':''}" onclick="lm='cmd';render()">⌨️ Buyruqlar</button></p>`+(lm==='book'?bookView():lessonsCmd())}
+
+/* ---------- Opsiya darsi ---------- */
+let O={cmd:null,i:0};
+function openOpt(c){tab=1;O={cmd:c==='tail'?'head':c,i:0};render();scrollTo(0,0)}
+function optView(){
+ if(!O.cmd)return `<div class="card"><b>Buyruq tuzilishi</b><pre>$ ls -l /etc</pre><span class="mono">ls</span> buyruq (nima qilish)<br><span class="mono">-l</span> opsiya/flag (qanday qilish)<br><span class="mono">/etc</span> argument (nimaga qilish)<ul><li>Qisqa opsiya: <span class="mono">-l</span>, uzun: <span class="mono">--all</span></li><li>Qisqalarni birlashtirish mumkin: <span class="mono">-l -a</span> = <span class="mono">-la</span></li><li>Ba'zi opsiyalar qiymat oladi: <span class="mono">-n 3</span></li><li>Yordam: <span class="mono">--help</span> yoki <span class="mono">man buyruq</span></li></ul></div><p>Buyruqni tanlang, har bir opsiyani bittalab ko'rasiz:</p>${OK.map(k=>`<button class="${S.opt[k]?'p':''}" onclick="O={cmd:'${k}',i:0};render()">${k==='head'?'head/tail':k}${S.opt[k]?' ✓':''}</button>`).join('')}`;
+ const L=OPT[O.cmd],s=L[O.i],end=O.i===L.length-1;
+ return `<div class="right">${O.cmd==='head'?'head/tail':O.cmd} · ${O.i+1}/${L.length}</div><div class="card"><pre>$ ${esc(s[0])}</pre><p>${esc(s[1])}</p>${s[2]?`<pre style="color:var(--mut)">${esc(s[2])}</pre>`:''}</div><button ${O.i?'':'disabled'} onclick="O.i--;render()">Oldingi</button><button class="p" onclick="optNext(${end})">${end?'Tugatish (+15 XP)':'Keyingi'}</button><button onclick="O.cmd=null;render()">Ro'yxat</button>`}
+function optNext(end){if(!end){O.i++;render();return}if(!S.opt[O.cmd]){S.opt[O.cmd]=1;addXP(15);act();save();head();toast('Dars tugadi! +15 XP')}O.cmd=null;render()}
+
+/* ---------- Test ---------- */
+let T={mode:'opt',q:null,opts:[],picked:null,msg:'',done:false,left:60,score:0,timer:null,over:false};
+const stopT=()=>{clearInterval(T.timer);T.timer=null};
+function newQ(){T.q=rnd(ALL);const o=new Set([T.q]);while(o.size<4)o.add(rnd(ALL));T.opts=[...o].sort(()=>Math.random()-.5);T.picked=null;T.msg='';T.done=false}
+function setMode(m){stopT();T.mode=m;T.over=false;newQ();if(m==='time'){T.left=60;T.score=0;T.timer=setInterval(tick,1000)}render()}
+function tick(){T.left--;const e=$('#tm');if(e)e.textContent=T.left;if(T.left<=0){stopT();T.over=true;if(T.score>S.best){S.best=T.score;save();toast('Yangi rekord!')}render()}}
+function testView(){
+ const m=(k,x)=>`<button class="${T.mode===k?'p':''}" onclick="setMode('${k}')">${x}</button>`;let h=`<p>${m('opt','Variantli')}${m('type','Yozma')}${m('time','60 soniya')}</p>`;
+ if(T.over)return h+`<div class="card"><b>Vaqt tugadi!</b><p>${T.score} ta to'g'ri. Rekord: ${S.best}</p></div><button class="p" onclick="setMode('time')">Qayta boshlash</button>`;
+ if(T.mode==='time')h+=`<div class="right">⏱ <span id="tm">${T.left}</span> s · Ball: ${T.score}</div>`;
+ h+=`<div class="card">${T.mode==='type'?'Buyruqni yozing: ':'Qaysi buyruq: '}${esc(T.q[1])}</div>`;
+ if(T.mode==='type')return h+`<div class="term"><span>$</span><input id="ti" autocomplete="off" autocapitalize="off" spellcheck="false" onkeydown="if(event.key==='Enter')chkT()"></div><p><button class="p" onclick="chkT()">Tekshirish</button><button onclick="T.msg='Maslahat: '+T.q[0];render()">Maslahat</button><button onclick="newQ();render()">Keyingi</button></p><div>${esc(T.msg)}</div>`;
+ h+=T.opts.map((o,i)=>`<button class="opt mono ${T.picked?(o===T.q?'ok':o===T.picked?'bad':''):''}" ${T.picked?'disabled':''} onclick="pick(${i})">${esc(o[0])}</button>`).join('');
+ return h+(T.picked&&T.mode==='opt'?'<button class="p opt" onclick="newQ();render()">Keyingi savol</button>':'')}
+function pick(i){if(T.picked)return;T.picked=T.opts[i];const ok=T.picked===T.q;answer(T.q,ok);
+ if(T.mode==='time'){if(ok)T.score++;render();setTimeout(()=>{if(T.mode==='time'&&!T.over&&tab===2){newQ();render()}},450)}else render()}
+function chkT(){if(T.done){return}const ok=$('#ti').value.trim().split(' ')[0]===T.q[0].split(' ')[0];T.done=true;answer(T.q,ok);T.msg=ok?"To'g'ri! Namuna: "+T.q[2]:"Noto'g'ri. Javob: "+T.q[2];render()}
+
+/* ---------- Kartalar (takrorlash) ---------- */
+let K={q:null,show:false};
+function cardsView(){const c=[0,0,0];ALL.forEach(x=>{const b=S.box[x[0]];if(b===undefined)c[0]++;else if(b>=4)c[2]++;else c[1]++});
+ let h=`<div class="right">Yangi: ${c[0]} · O'rganilmoqda: ${c[1]} · O'zlashtirilgan: ${c[2]}</div>`;
+ if(!K.q){const d=ALL.filter(x=>(S.due[x[0]]||0)<=Date.now()).sort((a,b)=>(S.box[a[0]]||0)-(S.box[b[0]]||0));if(d.length){K.q=d[0];K.show=false}}
+ if(!K.q)return h+`<div class="card">Hozircha takrorlash kerak emas. Keyinroq qaytib keling!</div><button onclick="K.q=rnd(ALL);K.show=false;render()">Baribir mashq qilish</button>`;
+ h+=`<div class="card">${esc(K.q[1])}</div>`;
+ if(!K.show)return h+`<button class="p opt" onclick="K.show=true;render()">Javobni ko'rsat</button>`;
+ return h+`<pre>$ ${esc(K.q[2])}</pre><button class="opt" onclick="rate(1)">Bildim</button><button class="opt" onclick="rate(0)">Bilmadim</button>`}
+function rate(ok){answer(K.q,!!ok,5);K.q=null;render()}
+
+/* ---------- Profil ---------- */
+let rs=false;
+function profView(){const l=lvl(S.xp),n=LV[l+1],w=Object.entries(S.wrong).sort((a,b)=>b[1]-a[1]).slice(0,5);
+ return `<div class="card"><b>${LV[l][1]}</b> · ${S.xp} XP${n?` · keyingi daraja ${n[0]} XP`:''}</div>
+<div class="card">🔥 Ketma-ket kunlar: <b>${S.streak}</b><br>Bugungi maqsad: <b>${Math.min(todayN(),GOAL)}/${GOAL}</b> javob<br>Jami: ${S.correct}/${S.total} to'g'ri${S.total?' ('+Math.round(S.correct/S.total*100)+'%)':''}<br>60 soniya rekordi: ${S.best}<br>Missiyalar: ${Object.keys(S.missions).length}/${M.length} · Opsiya darslari: ${Object.keys(S.opt).length}/${OK.length}</div>
+<div class="card"><b>Zaif buyruqlar</b><br>${w.length?w.map(x=>`<span class="mono">${esc(x[0])}</span> (${x[1]})`).join(', '):"Hozircha xato yo'q"}</div>
+${robotCard()}<div class="card"><b>Ko'rinish</b><p>Rejim: ${['auto','dark','light'].map((m,i)=>`<button class="chip ${S.set.theme===m?'on':''}" onclick="setTh('${m}')">${['Avto',"Qorong'i","Yorug'"][i]}</button>`).join('')}</p><p>Shrift: <button onclick="setFs(-2)">A−</button> ${S.set.font}px <button onclick="setFs(2)">A+</button></p></div>
+<div class="card"><b>Zaxira (JSON)</b><p>Telefonni almashtirsangiz, progress va o'z buyruqlaringiz yo'qolmasligi uchun.</p><textarea id="io" rows="4" placeholder="Eksportdan keyin JSON shu yerda chiqadi. Import uchun JSON ni shu yerga joylang."></textarea><p><button onclick="exp()">Eksport (nusxalash)</button><button onclick="imp($('#io').value)">Import</button></p><p><button onclick="dl()">Faylga saqlash</button><button onclick="this.nextElementSibling.click()">Fayldan yuklash</button><input type="file" accept=".json,application/json" style="display:none" onchange="impFile(this)"></p><small>Telefon ilovasida matn orqali (nusxalash/joylash) eng ishonchli usul.</small></div>
+<button onclick="reset()">Progressni o'chirish</button>`}
+function reset(){if(!rs){rs=true;toast('Tasdiqlash uchun yana bosing');return}S=fresh();fix();rebuild();applySet();save();rs=false;render()}
+function setTh(m){S.set.theme=m;save();applySet();render()}
+function setFs(d){S.set.font=Math.max(12,Math.min(26,S.set.font+d));save();applySet();render()}
+function exp(){const j=JSON.stringify(S);$('#io').value=j;copy(j)}
+function dl(){try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='kali_oquv_zaxira.json';a.click()}catch(e){toast("Faylga saqlab bo'lmadi, matndan foydalaning")}}
+function imp(j){try{const o=JSON.parse(j);if(!o||typeof o!=='object'||Array.isArray(o))throw 0;S=Object.assign(fresh(),o);fix();rebuild();applySet();save();toast('Yuklandi');render()}catch(e){toast("JSON noto'g'ri")}}
+function impFile(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>imp(r.result);r.readAsText(f)}
+
+/* ---------- Asosiy ---------- */
+let tab=0;const IC=['📚','🧩','📝','🗂️','💻','👤'];const TABS=['Darslar','Opsiya','Test','Kartalar','Terminal','Profil'];
+function go(i){stopT();tab=i;if(i===2&&!T.q)newQ();render()}
+function render(){$('#nav').innerHTML=TABS.map((x,i)=>`<button class="${i===tab?'on':''}" onclick="go(${i})"><span>${IC[i]}</span>${x}</button>`).join('');head();
+ $('#app').innerHTML=[lessons,optView,testView,cardsView,termView,profView][tab]();
+ if(tab===0&&lm==='cmd')lessonsList();if(tab===4)logPaint()}
+render();
+</script>
+<script>
+(()=>{
+const rb=$('#rb'),bub=$('#rbb'),eg=$('#rbE'),eyes=[...rb.querySelectorAll('.e')],pk=a=>a[Math.floor(Math.random()*a.length)];
+let m='idle',mt,bt,x=0,y=0,vx=0,vy=0,drag=0,raf=0,mv=0,lt=0,last=Date.now(),hid=false,tapT=0,advN=0,qt=Date.now(),qs=0,errs=0,t0=Date.now(),tourId=0,touring=false,ptm,tyT,ac,hv,hvT;
+const R=()=>S.rb,W=()=>rb.offsetWidth||96,H=()=>rb.offsetHeight||110,nm=()=>R().nm||'Kali-bot';
+const clamp=()=>{x=Math.max(4,Math.min(innerWidth-W()-4,x));y=Math.max(4,Math.min(innerHeight-H()-4,y))};
+const put=()=>{rb.style.transform=`translate(${x}px,${y}px)`};
+const DK="Ko'k",COLS={"Ko'k":['#b3d0f7','#6f9fe0'],'Yashil':['#b7f0c8','#4fbf7a'],'Pushti':['#f9c4dd','#e0699f'],"To'q ko'k":['#9db4e8','#3d58b0']};
+const ACS=[['hat','Kepka',()=>S.correct>=10,"10 ta to'g'ri javob"],['glasses',"Ko'zoynak",()=>Object.keys(S.opt).length>=3,'3 ta opsiya darsi'],['tie','Galstuk',()=>Object.keys(S.missions).length>=1,'1 ta missiya'],['hood','Hakker kapyushoni',()=>S.xp>=300,'300 XP']];
+const PZ={rest:[10,-10,3,3,2.6],rest0:[8,-8,0,0,1],wave:[10,-150,0,16,.45],up:[125,-125,5,5,.5],think:[10,-165,0,6,.9],cheek:[-150,150,3,3,1.5],flail:[110,-110,28,28,.18],grab:[160,-160,10,10,.25],cross:[-95,95,2,2,.6],fume:[-95,95,7,7,.12],hi:[10,-100,0,8,.6],hold:[-60,60,2,2,1.4],trophy:[10,-140,0,5,.5],write:[10,-60,0,9,.25],party:[150,-150,18,18,.25],hips:[38,-38,0,0,1],type:[-70,70,6,6,.15],shy:[-125,125,6,6,.8]};
+const PM={idle:'rest',flat:'rest',happy:'wave',love:'hold',star:'trophy',wow:'up',think:'think',sleepy:'rest0',sad:'cheek',dizzy:'flail',squint:'grab',angry:'fume',wink:'hi',blush:'hold',money:'hold',tired:'rest0',sus:'cross',proud:'hips',sick:'rest0',cry:'shy',hack:'type',load:'rest'};
+const CL={idle:'#7df3ff',flat:'#7df3ff',load:'#7df3ff',happy:'#5dff9d',wink:'#5dff9d',proud:'#5dff9d',star:'#ffd84d',wow:'#ffd84d',think:'#ffd84d',squint:'#ffd84d',money:'#ffd84d',sus:'#ffd84d',sleepy:'#4a7fa8',sad:'#6a8cff',dizzy:'#ff9d4d',tired:'#ffb04d',angry:'#ff4d5e',sick:'#ff4d5e',blush:'#ff7ac8',love:'#ff7ac8',cry:'#ff7ac8',hack:'#39ff14'},SN={happy:'ok',star:'ok',love:'ok',sad:'bad',dizzy:'bad',angry:'bad',wow:'up',sleepy:'z'};
+const PP={love:'heart',blush:'gift',money:'coins',star:'trophy'},prs=[...rb.querySelectorAll('.rpr g[data-p]')],sv=rb.querySelector('svg'),aL=$('#aL'),aR=$('#aR');
+function snd(k){if(R().mute)return;try{const C=window.AudioContext||window.webkitAudioContext;ac=ac||new C();if(ac.state=='suspended')ac.resume();const z=k=='z',TT={ok:[[660,0],[880,.09]],bad:[[220,0],[165,.12]],up:[[520,0],[780,.07]],z:[[110,0]]}[k];TT.forEach(([f,d])=>{const o=ac.createOscillator(),g=ac.createGain();o.type=z?'sawtooth':'sine';o.frequency.value=f;o.connect(g);g.connect(ac.destination);const t=ac.currentTime+d;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(z?.02:.05,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+(z?.9:.18));o.start(t);o.stop(t+(z?1:.2))})}catch(e){}}
+function prop(n){prs.forEach(g=>g.style.display=g.dataset.p==n?'':'none')}
+function arm(a,th,amp,d,sg){a.style.transform=`translate(${sg>0?28:92}px,98px) rotate(${th}deg)`;const w=a.firstElementChild,p=a.querySelector('.rpr');if(p)p.style.transform=`translate(0px,34px) rotate(${-th}deg)`;w.style.animation=amp?`sg ${d}s ease-in-out infinite alternate`:'none';w.style.setProperty('--amp',amp);w.style.setProperty('--s',sg)}
+function pz(n,k){const p=PZ[n]||PZ.rest;if(!k)prop(null);rb.querySelectorAll('.fg').forEach(f=>f.style.display='none');arm(aL,p[0],p[2],p[4],1);arm(aR,p[1],p[3],p[4],-1)}
+function mood(n,ms){m=n;pz(PM[n]||'rest');if(PP[n])prop(PP[n]);rb.style.setProperty('--cl',CL[n]||'#7df3ff');rb.dataset.m=n;if(SN[n])snd(SN[n]);eyes.forEach(g=>g.style.display=g.dataset.e==n?'':'none');clearTimeout(mt);if(ms)mt=setTimeout(()=>mood('idle'),ms)}
+function say(t,n,ms=4200){if(hid)return;mood(n||'happy',ms);bub.textContent=t;bub.className='rbb '+(y>140?'up':'dn')+' '+(x>innerWidth/2?'r':'l')+' s';clearTimeout(bt);bt=setTimeout(()=>bub.classList.remove('s'),ms+600)}
+const emo=(n,ms=2200)=>{if(!hid)mood(n,ms)},poke=()=>{last=Date.now();if(m=='sleepy')mood('idle')};
+const anim=(c,ms=1500)=>{rb.classList.add(c);setTimeout(()=>rb.classList.remove(c),ms)},nod=()=>anim('nod'),shake=()=>anim('shk',1300),flip=()=>anim('fl',950),bow=()=>anim('bw',1700),dance=(t,n)=>{say(t,n||'happy',4200);pz('party',1);anim('dc',4200)},upset=t=>{shake();say(t,'sad',5000)};
+const store=()=>{const r=R();r.x=x/innerWidth;r.y=y/innerHeight;r.hid=hid;save()};
+function look(){const r=R(),c=COLS[r.col]||COLS[DK],st=document.getElementById('rgb2').querySelectorAll('stop');st[0].setAttribute('stop-color',c[0]);st[1].setAttribute('stop-color',c[1]);rb.querySelectorAll('[data-ac]').forEach(a=>a.style.display=r.acc.includes(a.dataset.ac)?'':'none');hid=!!r.hid;rb.hidden=hid;if(r.x==null){x=innerWidth-W()-14;y=innerHeight-H()-130}else{x=r.x*innerWidth;y=r.y*innerHeight}clamp();put()}
+function point(el,t,n='happy',ms=4200,pr,nh){if(hid||!el||!el.getClientRects().length)return;const r=el.getBoundingClientRect(),b=rb.getBoundingClientRect(),dx=r.left+r.width/2-(b.left+b.width/2),dy=r.top+r.height/2-(b.top+b.height*.8),th=Math.atan2(-dx,dy)*180/Math.PI,L=!pr&&dx<0;say(t,n,ms);arm(L?aL:aR,th,3,.35,L?1:-1);if(pr)prop(pr);else(L?aL:aR).querySelector('.fg').style.display='';if(!nh){el.classList.add('rbhl');setTimeout(()=>el.classList.remove('rbhl'),ms)}}
+function glide(){cancelAnimationFrame(raf);const f=()=>{x+=vx;y+=vy;vx*=.95;vy*=.95;if(x<4||x>innerWidth-W()-4)vx*=-.7;if(y<4||y>innerHeight-H()-4)vy*=-.7;clamp();put();if(Math.hypot(vx,vy)>.15)raf=requestAnimationFrame(f);else store()};raf=requestAnimationFrame(f)}
+/* doska: buyruqni qismlarga ajratib ko'rsatadi */
+const bd=document.createElement('div');bd.className='rbd';rb.appendChild(bd);
+function board(c){if(hid||!c)return;const tk=c[2].match(/"[^"]*"|'[^']*'|\S+/g)||[];bd.innerHTML=tk.map((t,i)=>{const k=i==0?['b','buyruq']:t[0]=='-'?['o','opsiya']:/^(\||>>?|&&)$/.test(t)?['p',"bog'lovchi"]:['g','argument'];return `<span class="tk ${k[0]}" style="animation-delay:${i*.45}s"><code>${esc(t)}</code><i>${k[1]}</i></span>`}).join('')+`<div class="mu">${esc(c[1])}</div>`;bd.className='rbd s '+(bub.classList.contains('up')?'dn':'up')+' '+(bub.classList.contains('r')?'r':'l');clearTimeout(bd._t);bd._t=setTimeout(()=>bd.classList.remove('s'),7000)}
+const cmdOf=el=>{const n=el&&el.querySelector&&el.querySelector('.mono');if(!n)return null;const k=n.textContent.replace(/^★ /,'').trim();return ALL.find(c=>c[0]===k)||null};
+function topicUnder(){if(tab!==0)return null;const r=rb.getBoundingClientRect(),X=r.left+r.width/2,pe=rb.style.pointerEvents;rb.style.pointerEvents='none';let h=null;try{for(const py of [r.top+r.height/2,r.bottom-6,r.top+6]){for(const el of document.elementsFromPoint(X,py)){const c=el.closest&&el.closest('.item,#detail .card');if(c&&!c.closest('#rb')){h=cmdOf(c);if(h)break}}if(h)break}}catch(e){}rb.style.pointerEvents=pe;return h}
+function advise(tq){advN++;let msg;
+ if(tq){board(tq);msg=`Maslahat: ${tq[0]} ni shunday sinang: ${tq[2]}. Terminal yoki Test bilan mustahkamlang!`}
+ else if(todayN()<GOAL)msg=`Maslahat: bugungi maqsadga ${GOAL-todayN()} ta javob qoldi. Test yoki Kartalar bilan to'ldiring!`;
+ else{const k=OK.find(c=>!S.opt[c]);if(k)msg=`Maslahat: "${k}" opsiyalarini o'rganing ('Opsiya' bo'limi).`;else{const i=M.findIndex((z,j)=>!S.missions[j]);msg=i>=0?`Maslahat: Missiya ${i+1} ("${M[i].t}") sizni kutyapti!`:"Maslahat: hammasini bajardingiz! Kartalar bilan bilimni mustahkamlab turing."}}
+ say(msg,pk(['wink','happy','star']),7000)}
+function tip(){const q=pk(ALL),r=Math.random();if(r<.25){const l=lvl(S.xp);say(`Siz ${LV[l][1]} darajasidasiz: ${S.xp} XP, bugun ${Math.min(todayN(),GOAL)}/${GOAL} javob.`,'proud',5200)}else{board(q);say(pk([`Bilasizmi? ${q[0]}: ${q[1]}`,`Maslahat: ${q[0]} buyrug'ini terminalda sinab ko'ring!`,`Men ${nm()}! Meni sudrab, uloqtirib ko'ring.`]),pk(['wow','star','happy']),5200)}}
+/* sudrash, tegish, ko'z kuzatishi */
+rb.addEventListener('pointerdown',e=>{tourId++;touring=false;poke();drag=1;mv=0;vx=vy=0;cancelAnimationFrame(raf);rb.setPointerCapture(e.pointerId);rb.classList.add('g');mood('squint');bub.classList.remove('s');rb._ox=e.clientX-x;rb._oy=e.clientY-y;lt=Date.now()});
+rb.addEventListener('pointermove',e=>{if(!drag)return;const a=e.clientX-rb._ox,b=e.clientY-rb._oy;mv+=Math.abs(a-x)+Math.abs(b-y);vx=(a-x)*.6+vx*.4;vy=(b-y)*.6+vy*.4;x=a;y=b;clamp();put();lt=Date.now()});
+const up=()=>{if(!drag)return;drag=0;rb.classList.remove('g');if(Date.now()-lt>80)vx=vy=0;if(mv<6){vx=vy=0;const tn=Date.now(),dbl=tn-tapT<420;tapT=dbl?0:tn;const tq=topicUnder();if(dbl)advise(tq);else if(tq){board(tq);say(`${tq[0]}: ${tq[1]}`,pk(['wow','star','happy']),5600)}else tip()}else{mood(Math.hypot(vx,vy)>8?'dizzy':'happy',1600);glide()}store()};
+rb.addEventListener('pointerup',up);rb.addEventListener('pointercancel',up);
+addEventListener('pointermove',e=>{const r=rb.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),d=Math.hypot(dx,dy)||1,k=Math.min(1,d/300);eg.style.transform=`translate(${dx/d*k*4}px,${dy/d*k*3}px)`;sv.style.transform=`rotate(${dx/d*k*5}deg)`},{passive:true});
+addEventListener('keydown',poke);addEventListener('pointerdown',poke);addEventListener('resize',()=>{clamp();put()});
+setInterval(()=>{if(!hid&&!drag&&m=='idle'&&Date.now()-last>45000)mood('sleepy')},5000);
+setInterval(()=>{if(!hid&&!drag){vx=(Math.random()-.5)*6;vy=(Math.random()-.5)*6;glide()}},17000);
+setInterval(()=>{if(m!='idle'||drag||hid||touring||bub.classList.contains('s'))return;const r=Math.random();r<.3?emo('wink',650):r<.5?emo('wow',500):r<.7&&nod()},7000);
+setInterval(()=>{if(m=='hack'){$('#hk1').textContent=Math.random()<.5?'1':'0';$('#hk2').textContent=Math.random()<.5?'1':'0'}},150);
+/* sozlamalar va aksessuarlar */
+function chkAc(q){ACS.forEach(a=>{if(a[3]&&a[2]()&&!R().unl.includes(a[0])){R().unl.push(a[0]);save();if(!q){say(`Yangi aksessuar ochildi: ${a[1]}! Profil bo'limidan kiyib ko'ring.`,'love',5600);prop('gift')}}})}
+const rbCardHtml=()=>{const r=R();return `<div class="card"><b>Robot</b> <span class="mu">(${esc(nm())})</span><p><input type="text" maxlength="14" value="${esc(r.nm||'Kali-bot')}" placeholder="Robot ismi" oninput="rbName(this.value)"></p><p class="mu">Rangi</p><p>${Object.keys(COLS).map((k,i)=>`<button class="chip ${(r.col||DK)===k?'on':''}" onclick="rbCol(${i})">${esc(k)}</button>`).join('')}</p><p class="mu">Aksessuarlar</p>${ACS.map(a=>{const u=r.unl.includes(a[0])||a[2]();return `<label style="display:block;margin:4px 0"><input type="checkbox" ${u?'':'disabled'} ${r.acc.includes(a[0])?'checked':''} onchange="rbAcc('${a[0]}',this.checked)"> ${a[1]}${u?'':' 🔒 '+a[3]}</label>`}).join('')}<label style="display:block;margin:8px 0"><input type="checkbox" ${r.mute?'':'checked'} onchange="rbSnd(this.checked)"> Ovoz</label><button onclick="rbToggle()">${r.hid?"Robotni ko'rsatish":'Robotni yashirish'}</button><button onclick="rbTour()">Tanishuv turi</button></div>`};
+Object.assign(window,{robotCard:rbCardHtml,
+ rbName(v){R().nm=v.trim().slice(0,14);save()},
+ rbCol(i){R().col=Object.keys(COLS)[i];save();look();render()},
+ rbAcc(a,on){const r=R();r.acc=on?[...r.acc,a]:r.acc.filter(z=>z!==a);save();look();on&&say('Yarashibdi!','blush',2400)},
+ rbSnd(on){R().mute=!on;save();on&&snd('ok')},
+ rbToggle(){if(!hid){say("Xayr! Kerak bo'lsam, Profil bo'limidan chaqiring.",'happy',1400);bow();setTimeout(()=>{hid=true;rb.hidden=true;store();render()},1500)}else{hid=false;rb.hidden=false;store();clamp();put();say("Qaytdim! Savollaringiz bo'lsa, bosing.",'love');render()}},
+ rbTour(){runTour()}});
+/* tanishuv turi: robot ilovani tanishtiradi */
+const TOUR=[[0,"Salom! Men {n}, o'qituvchingizman. Ilova bilan tanishtiraman."," happy"],[0,"Darslarda kitob (mashqlari bilan) va 50 dan ortiq buyruq bor: qidiring, tegga qarab saralang, sevimlilarga qo'shing.","wink"],[1,"Opsiya bo'limida har bir flag nima qilishini bittalab, misollar bilan ko'rsataman.","think"],[2,"Test: variantli, yozma va 60 soniyalik. Har to'g'ri javob XP beradi!","star"],[3,"Kartalarda bilmagan buyruqlaringiz tez-tez qaytadi: bu takrorlash tizimi.","wow"],[4,"Terminal xavfsiz mashq muhiti. Missiyalarni yechib 50 XP oling!","hack"],[5,"Profilda XP, daraja, kunlik maqsad, zaxira va mening sozlamalarim bor. Omad!","love"]];
+function runTour(){const id=++tourId;touring=true;let i=0;const step=()=>{if(tourId!==id)return;if(i>=TOUR.length){touring=false;return}const s=TOUR[i++];go(s[0]);say(s[1].replace('{n}',nm()),s[2].trim(),5200);setTimeout(step,5900)};step()}
+/* hodisalarga munosabat */
+const _answer=answer;answer=function(c,ok,xp){_answer(c,ok,xp);if(hid||touring)return;
+ if(tab===2&&T.mode==='time'){emo(ok?'happy':'sad',500);return}
+ if(S.today.n===GOAL&&ok)return dance("Kunlik maqsad bajarildi! Zo'r!",'love');
+ if(tab===3)return ok?say(pk(["Ajoyib, esda qolgan!","Barakalla!"]),'happy',2400):say("Takrorlab olamiz, xavotir yo'q!",'think',2800);
+ if(ok){say(pk(["To'g'ri!","Barakalla!","Aynan shunday!","Zo'r!"]),pk(['happy','star','wink']),2400);nod()}else{say(pk(["Hechqisi yo'q, keyingisi sizniki!","Bu safar bo'lmadi. Xato qilib o'rganiladi!"]),'sad',3200);shake()}};
+const _addXP=addXP;addXP=function(n){const a=lvl(S.xp);_addXP(n);const b=lvl(S.xp);if(b>a)setTimeout(()=>dance(`Yangi daraja: ${LV[b][1]}! Tabriklayman!`,'love'),700)};
+const _chkM=chkM;chkM=function(){const mm=M[TM.m],okv=mm&&$('#man').value.toLowerCase().includes(mm.k),b=Object.keys(S.missions).length;_chkM();if(Object.keys(S.missions).length>b)dance("Missiya bajarildi! Siz haqiqiy detektivsiz!",'cry');else if(!okv)say("Hali emas. Terminalda yana qidiring, Maslahat tugmasi bor!",'think',3600)};
+const _optNext=optNext;optNext=function(end){const k=O.cmd,had=S.opt[k];_optNext(end);if(end&&!had&&S.opt[k])say(pk(["Dars tugadi! Endi buni terminalda sinang.","Ajoyib, opsiyalar endi sizga tanish!"]),'proud',4200)};
+const _bo=bkOpenCh;bkOpenCh=function(i){_bo(i);if(!hid&&!touring)say(pk(["Bobni o'qing, mashqlarni terminalda sinab ko'ring!","Yaxshi tanlov! Kod bloklarini 'Nusxa' bilan ko'chirib oling."]),'happy',4200)};
+const _bt=bkTick;bkTick=function(k,on){_bt(k,on);if(on&&!hid&&!touring)say(pk(["Mashq bajarildi! +5 XP","Zo'r, davom eting!"]),'star',2600)};
+const _fav=fav;fav=function(i){const n=ALL[i][0],had=S.fav.includes(n);_fav(i);if(!had)say("Sevimlilarga qo'shildi!",'love',2400)};
+const _addC=addC;addC=function(){const n=S.custom.length;_addC();if(S.custom.length>n)say("Yangi buyruq xotirangizda!",'love',3000)};
+const _newQ=newQ;newQ=function(){_newQ();qt=Date.now();qs=0};
+const _as=applySet;applySet=function(){_as();look()};
+function react(l,en){const o=en.map(e=>e.o||'').join('\n'),err=/command not found|No such file|cannot|missing|Is a directory|Not a directory|File exists|Usage|not specified/.test(o);poke();
+ if(/\brm\s+-\w*[rR]\w*\s+(-\w+\s+)*\/(\s|\*|$)/.test(l))return say("Ehtiyot bo'ling! Haqiqiy tizimda bu hammasini o'chirib yuborardi!",'dizzy',5200);
+ if(/^(sudo\s+)?(nmap|tcpdump|tshark|nikto|gobuster|john|whatweb|hydra|sqlmap)\b/.test(l))return say("Hakker rejimi! Bu vositalarni faqat o'z laboratoriyangizda yoki yozma ruxsat bilan ishlating.",'hack',5000);
+ if(/^(sudo\s+)?(ping|traceroute|curl|wget|apt|dig|mtr)\b/.test(l))return emo('load',1600);
+ if(err){errs++;return errs%3===0?say("Ketma-ket xato. Sekinroq, imloni tekshiring. 'help' yozing.",'sus',4600):Math.random()<.6?say(pk(["Xatolik bor. Yo'l yoki nomni tekshiring.","Hech gap yo'q, xato qilib o'rganiladi!","Imloni tekshiring."]),pk(['think','sad','dizzy']),3800):emo('think')}
+ errs=0;Math.random()<.25?say(pk(["Yaxshi!","Toza ishlandi.","Davom eting!"]),pk(['happy','wink'])):emo(pk(['happy','wink']))}
+const _tk=termKey;termKey=function(e){const el=$('#tin'),l=e&&e.key==='Enter'&&el?el.value.trim():'',n0=TM.log.length;_tk(e);if(l&&!hid&&!touring)react(l,TM.log.slice(n0))};
+document.addEventListener('input',e=>{if(!e.target||e.target.id!=='tin'||hid||touring)return;poke();if(e.target.value){mood('flat',1800);pz('write',1);prop('pencil');rb.classList.add('ty');clearTimeout(tyT);tyT=setTimeout(()=>rb.classList.remove('ty'),1500)}});
+const HI=[()=>point($('#app input[type=text]')||$('#app .card'),"Qidiring yoki ro'yxatdan buyruq tanlang.",'happy',3600,'magnifier'),()=>say("Buyruqni tanlang, har bir opsiyani bittalab ko'rsataman!",'think',3600),()=>say("Test vaqti! Variantli, yozma yoki 60 soniyalik rejimni tanlang.",'wow',4200),()=>say("Avval javobni o'ylab ko'ring, keyin ko'rsataman!",'think',3600),()=>point($('#tin'),"Buyruqlarni shu yerga yozing. 'help' yordam beradi!",'happy',4200),()=>{const l=lvl(S.xp);say(`Siz ${LV[l][1]} darajasidasiz: ${S.xp} XP, ${S.streak} kun ketma-ket.`,'proud',5000)}];
+const _go=go;go=function(i){const pv=tab;_go(i);if(touring||i===pv||hid)return;clearTimeout(ptm);if(pv===4&&TM.m!==null&&!S.missions[TM.m]&&Math.random()<.5)return upset("Missiya tugamadi-ku, qayerga ketdingiz?");HI[i]&&HI[i]()};
+/* sichqoncha ustiga borsa tushuntiradi (kompyuterda) */
+$('#app').addEventListener('pointerover',e=>{if(!matchMedia('(pointer:fine)').matches)return;const c=e.target.closest&&e.target.closest('.item');if(!c||c===hv)return;hv=c;clearTimeout(hvT);if(drag||hid||touring)return;hvT=setTimeout(()=>{if(!c.matches(':hover')||bub.classList.contains('s'))return;const q=cmdOf(c);if(q){point(c,`${q[0]}: ${q[1]}`,'happy',5200,'magnifier',1);board(q)}},1300)});
+$('#app').addEventListener('pointerout',e=>{if(hv&&!(e.relatedTarget&&hv.contains(e.relatedTarget))){hv=null;clearTimeout(hvT)}});
+/* davriy kuzatuvchi */
+setInterval(()=>{chkAc();if(hid||drag||touring)return;
+ if(tab===2&&T.q&&!T.picked&&!T.over&&T.mode!=='time'){const d=Date.now()-qt;if(d>10000&&qs<1){qs=1;say("Vaqt ketyapti!",'think',3500)}else if(d>25000&&qs<2){qs=2;say("Qiyinmi? Taxmin qilib ko'ring, xato ham o'rgatadi.",'think',4200)}}
+ if(tab===4&&TM.m!==null&&!S.missions[TM.m]&&Date.now()-last>60000){last=Date.now();say("Missiya kutyapti! Maslahat tugmasini bosib ko'ring.",'sad',4200)}
+ if(Date.now()-t0>25*60000){t0=Date.now();say("Charchamadingizmi? 5 daqiqa dam oling.",'tired',6500)}},2000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-last>90000&&!hid)say('Qaytdingiz! Davom etamizmi?','happy',3500)});
+/* boshlanish */
+look();mood('idle');chkAc(1);
+const yest=fmt(new Date(Date.now()-864e5)),st=S.last===day()||S.last===yest?S.streak:0,greet=()=>{const h=new Date().getHours();return h<5?'Xayrli tun':h<12?'Xayrli tong':h<18?'Xayrli kun':'Xayrli kech'};
+if(!R().seen){R().seen=1;save();setTimeout(runTour,900)}
+else setTimeout(()=>{if(hid)return;bow();st>=7&&st%7===0?dance(`${greet()}, ${nm()}! ${st} kun ketma-ket!`,'love'):st>=3?say(`${greet()}! ${st} kun ketma-ket, zo'r!`,'love',5600):say(`${greet()}! Men ${nm()}, o'qituvchingizman. Meni sudrab istalgan joyga olib boring!`,'happy',6000)},700);
+})();
+</script></body></html>
