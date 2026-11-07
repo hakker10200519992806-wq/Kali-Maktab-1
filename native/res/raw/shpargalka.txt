@@ -1,0 +1,133 @@
+Terminal bilan tanishuv	whoami	men kimman
+Terminal bilan tanishuv	hostname	kompyuter nomi
+Terminal bilan tanishuv	date	sana va vaqt
+Terminal bilan tanishuv	pwd	hozir qaysi papkadaman
+Terminal bilan tanishuv	echo Salom	matn chiqarish
+Terminal bilan tanishuv	clear	ekranni tozalash (yoki Ctrl+L)
+Terminal bilan tanishuv	man ls	to'liq qo'llanma. q bilan chiqing, /so'z bilan qidiring
+Terminal bilan tanishuv	ls --help	qisqa yordam (ko'p buyruqlarda)
+Terminal bilan tanishuv	whatis ls	bir qatorli tavsif
+Terminal bilan tanishuv	apropos nusxa	kalit so'z bo'yicha buyruq qidirish
+Terminal bilan tanishuv	type cd	buyruq turini ko'rsatish (o'rnatilgan yoki dastur)
+Fayl tizimi va harakatlanish	ls	oddiy ro'yxat
+Fayl tizimi va harakatlanish	ls -l	batafsil (huquqlar, egasi, o'lcham, sana)
+Fayl tizimi va harakatlanish	ls -a	yashirin fayllar bilan (nomi nuqta bilan boshlanadi)
+Fayl tizimi va harakatlanish	ls -la	ikkalasi birga
+Fayl tizimi va harakatlanish	ls -lh	o'lchamlar o'qiladigan ko'rinishda (KB, MB)
+Fayl tizimi va harakatlanish	ls -lt	yangi o'zgartirilgani birinchi
+Fayl tizimi va harakatlanish	ls /etc	boshqa papka tarkibi
+Fayl tizimi va harakatlanish	cd /etc	absolyut yo'l bilan
+Fayl tizimi va harakatlanish	cd ..	bir daraja yuqoriga
+Fayl tizimi va harakatlanish	cd ~	uy papkasiga (yoki oddiy "cd")
+Fayl tizimi va harakatlanish	cd -	oldingi papkaga qaytish
+Fayl tizimi va harakatlanish	cd Desktop	nisbiy yo'l bilan
+Fayl tizimi va harakatlanish	pwd	qayerdaman?
+Fayl va papkalar bilan ishlash	mkdir lab	papka yaratish
+Fayl va papkalar bilan ishlash	mkdir -p lab/test/a	ichma-ich papkalarni birdan yaratish
+Fayl va papkalar bilan ishlash	touch fayl.txt	bo'sh fayl yaratish
+Fayl va papkalar bilan ishlash	echo "salom" > salom.txt	matnli fayl yaratish
+Fayl va papkalar bilan ishlash	cp fayl.txt nusxa.txt	fayl nusxasi
+Fayl va papkalar bilan ishlash	cp -r lab lab_zaxira	papkani ichi bilan nusxalash (-r)
+Fayl va papkalar bilan ishlash	mv nusxa.txt yangi.txt	nomini o'zgartirish
+Fayl va papkalar bilan ishlash	mv yangi.txt lab/	papkaga ko'chirish
+Fayl va papkalar bilan ishlash	rm fayl.txt	faylni o'chirish
+Fayl va papkalar bilan ishlash	rm -i fayl.txt	o'chirishdan oldin so'rash
+Fayl va papkalar bilan ishlash	rmdir bosh_papka	faqat BO'SH papkani o'chirish
+Fayl va papkalar bilan ishlash	rm -r lab_zaxira	papkani ichi bilan o'chirish
+Fayl va papkalar bilan ishlash	cat fayl	butun faylni chiqaradi (qisqa fayllar uchun)
+Fayl va papkalar bilan ishlash	less fayl	sahifalab ko'rish. Space: keyingi sahifa, /so'z: qidirish, q: chiqish
+Fayl va papkalar bilan ishlash	head -n 5 fayl	birinchi 5 qator
+Fayl va papkalar bilan ishlash	tail -n 5 fayl	oxirgi 5 qator
+Fayl va papkalar bilan ishlash	tail -f log	yangi qatorlarni jonli kuzatish (Ctrl+C bilan to'xtatish)
+Fayl va papkalar bilan ishlash	wc -l fayl	qatorlar sonini sanash
+Fayl va papkalar bilan ishlash	file fayl	fayl turini aniqlash (matn, rasm, dastur)
+Fayl va papkalar bilan ishlash	stat fayl	fayl haqida to'liq ma'lumot
+Fayl va papkalar bilan ishlash	ls *.txt	barcha txt fayllar (* = istalgan belgilar, hech bo'lmasa ham)
+Fayl va papkalar bilan ishlash	ls fayl?.txt	fayl1.txt, faylA.txt (? = aynan bitta belgi)
+Fayl va papkalar bilan ishlash	ls fayl[12].txt	qavs ichidagi bitta belgi ([abc])
+Fayl va papkalar bilan ishlash	touch {a,b,c}.txt	uchta fayl yaratadi (variantlar ro'yxati)
+Fayl huquqlari va foydalanuvchilar	ls -l skript.sh	huquqlarni o'qish: -rwxr-xr-- (egasi, guruh, boshqalar)
+Fayl huquqlari va foydalanuvchilar	r = 4	o'qish (fayl) / ichidagilar ro'yxatini ko'rish (papka)
+Fayl huquqlari va foydalanuvchilar	w = 2	yozish, o'zgartirish (fayl) / ichida yaratish va o'chirish (papka)
+Fayl huquqlari va foydalanuvchilar	x = 1	dastur sifatida bajarish (fayl) / ichiga kirish, cd (papka)
+Fayl huquqlari va foydalanuvchilar	chmod 755 skript.sh	egasi rwx, boshqalar r-x (dasturlar uchun odatiy)
+Fayl huquqlari va foydalanuvchilar	chmod 644 hujjat.txt	egasi rw-, boshqalar r-- (oddiy fayl)
+Fayl huquqlari va foydalanuvchilar	chmod 600 maxfiy.txt	faqat egasi o'qiydi va yozadi
+Fayl huquqlari va foydalanuvchilar	chmod +x skript.sh	bajariladigan qilish
+Fayl huquqlari va foydalanuvchilar	chmod -w hujjat.txt	yozishni olib tashlash
+Fayl huquqlari va foydalanuvchilar	chmod u+x,g-w fayl	u=egasi, g=guruh, o=boshqalar, a=hammasi
+Fayl huquqlari va foydalanuvchilar	sudo chown kali:kali fayl.txt	egasi va guruhini belgilash
+Fayl huquqlari va foydalanuvchilar	sudo chown -R kali: papka	papka ichi bilan
+Fayl huquqlari va foydalanuvchilar	whoami	kim ekaningizni ko'rsatadi
+Fayl huquqlari va foydalanuvchilar	id	guruhlaringizni ko'rsatadi
+Fayl huquqlari va foydalanuvchilar	/etc/passwd	foydalanuvchilar ro'yxati
+Fayl huquqlari va foydalanuvchilar	/etc/shadow	parol xeshlari (faqat root o'qiy oladi)
+Fayl huquqlari va foydalanuvchilar	sudo apt update	root huquqi bilan
+Fayl huquqlari va foydalanuvchilar	sudo !!	oxirgi buyruqni sudo bilan qaytarish
+Fayl huquqlari va foydalanuvchilar	sudo -i	root sessiyasiga kirish (ehtiyot bo'ling, exit bilan chiqing)
+Fayl huquqlari va foydalanuvchilar	sudo adduser sinov	yangi foydalanuvchi
+Fayl huquqlari va foydalanuvchilar	sudo usermod -aG sudo sinov	sudo guruhiga qo'shish
+Fayl huquqlari va foydalanuvchilar	sudo deluser sinov	foydalanuvchini o'chirish
+Pipe, redirect va oqimlar	stdin (0)	kirish (odatda klaviatura)
+Pipe, redirect va oqimlar	stdout (1)	oddiy chiqish (ekran)
+Pipe, redirect va oqimlar	stderr (2)	xatolar chiqishi (ekran)
+Pipe, redirect va oqimlar	ls -la > royxat.txt	faylga yozish (ustidan yozadi)
+Pipe, redirect va oqimlar	echo "yana" >> royxat.txt	faylning oxiriga qo'shish
+Pipe, redirect va oqimlar	buyruq 2> xatolar.txt	faqat xatolarni faylga
+Pipe, redirect va oqimlar	buyruq > ok.txt 2> xato.txt	alohida fayllarga
+Pipe, redirect va oqimlar	buyruq > hammasi.txt 2>&1	ikkalasini bitta faylga
+Pipe, redirect va oqimlar	buyruq 2> /dev/null	xatolarni tashlab yuborish
+Pipe, redirect va oqimlar	sort < royxat.txt	fayldan kirish olish
+Pipe, redirect va oqimlar	ls -la | less	uzun chiqishni sahifalab ko'rish
+Pipe, redirect va oqimlar	ls /etc | wc -l	/etc'da nechta element bor
+Pipe, redirect va oqimlar	cat /etc/passwd | cut -d: -f1	faqat foydalanuvchi nomlari
+Pipe, redirect va oqimlar	ps aux | grep firefox	jarayonlardan firefox'ni topish
+Pipe, redirect va oqimlar	history | tail -n 10	oxirgi 10 buyruq
+Pipe, redirect va oqimlar	cat fayl.txt | sort | uniq -c | sort -nr	takrorlanishlarni sanash
+Pipe, redirect va oqimlar	grep so'z fayl	qatordan so'z qidirish. -i katta-kichik farqlamaydi, -n qator raqami, -v mos kelmaganlar, -r papkada rekursiv
+Pipe, redirect va oqimlar	cut -d: -f1	ustunni ajratish: -d ajratgich, -f ustun raqami
+Pipe, redirect va oqimlar	sort	saralash. -n raqam bo'yicha, -r teskari
+Pipe, redirect va oqimlar	uniq -c	ketma-ket takrorlarni olib tashlash/sanash (avval sort kerak)
+Pipe, redirect va oqimlar	wc -l	qatorlar sonini sanash (-w so'z, -c bayt)
+Pipe, redirect va oqimlar	tr a-z A-Z	belgilarni almashtirish (kichik harfni katta harfga)
+Pipe, redirect va oqimlar	sed 's/eski/yangi/' fayl	matnni almashtirish
+Pipe, redirect va oqimlar	awk '{print $1}' fayl	ustunlar bilan ishlash (birinchi ustunni chiqarish)
+Pipe, redirect va oqimlar	diff a.txt b.txt	ikki fayl farqini ko'rsatish
+Pipe, redirect va oqimlar	tee fayl	chiqishni ham ekranga, ham faylga yozish
+Qidirish	find ~ -name "*.txt"	uy papkasidan txt fayllar
+Qidirish	find /etc -name "*.conf" 2>/dev/null	xatolarni yashirish
+Qidirish	find . -type d	faqat papkalar (-type f: fayllar)
+Qidirish	find . -size +10M	10 MB dan katta fayllar
+Qidirish	find . -mtime -1	oxirgi 1 kunda o'zgargan
+Qidirish	find . -name "*.log" -exec ls -l {} \;	topilganlarga buyruq qo'llash
+Qidirish	which python3	buyruq qayerda joylashganini ko'rsatish
+Qidirish	locate fayl	tezkor qidiruv (bazadan). Avval sudo updatedb
+Qidirish	grep -r "so'z" papka	papkadagi fayllar ichidan matn qidirish
+Qidirish	whereis ls	dastur, qo'llanma va manba joylashuvi
+Jarayonlar va xizmatlar	ps aux	barcha jarayonlar
+Jarayonlar va xizmatlar	ps aux | grep firefox	filtrlash
+Jarayonlar va xizmatlar	top	jonli ko'rinish (q bilan chiqish)
+Jarayonlar va xizmatlar	htop	qulayroq top (sudo apt install htop)
+Jarayonlar va xizmatlar	pgrep firefox	nomi bo'yicha PID topish
+Jarayonlar va xizmatlar	kill 1234	PID = 1234 jarayonga to'xtash so'rovi
+Jarayonlar va xizmatlar	kill -9 1234	majburan to'xtatish (oxirgi chora)
+Jarayonlar va xizmatlar	pkill firefox	nomi bo'yicha to'xtatish
+Jarayonlar va xizmatlar	sleep 300	5 daqiqa kutadi, terminal band
+Jarayonlar va xizmatlar	Ctrl+Z	to'xtatib qo'yish
+Jarayonlar va xizmatlar	bg	fonda davom ettirish
+Jarayonlar va xizmatlar	jobs	fon ishlar ro'yxati
+Jarayonlar va xizmatlar	fg	old planga qaytarish
+Jarayonlar va xizmatlar	sleep 300 &	boshidan fonda ishga tushirish
+Jarayonlar va xizmatlar	systemctl status ssh	holatini ko'rish
+Jarayonlar va xizmatlar	sudo systemctl start ssh	yoqish
+Jarayonlar va xizmatlar	sudo systemctl stop ssh	to'xtatish
+Jarayonlar va xizmatlar	sudo systemctl enable ssh	tizim yoqilganda avtomatik ishga tushish
+Jarayonlar va xizmatlar	sudo systemctl disable ssh	avtomatik ishga tushishni o'chirish
+Jarayonlar va xizmatlar	journalctl -u ssh -n 20	xizmat jurnalining oxirgi 20 qatori
+Paketlar (apt)	sudo apt update	paketlar ro'yxatini yangilash
+Paketlar (apt)	sudo apt upgrade -y	o'rnatilganlarni yangilash
+Paketlar (apt)	sudo apt full-upgrade -y	chuqur yangilash (Kali uchun tavsiya)
+Paketlar (apt)	sudo apt install tree	dastur o'rnatish
+Paketlar (apt)	sudo apt remove tree	o'chirish
+Paketlar (apt)	apt search kalit	qidirish
+Paketlar (apt)	apt show tree	paket haqida ma'lumot
