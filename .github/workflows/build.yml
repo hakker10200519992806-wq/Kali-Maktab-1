@@ -21,7 +21,7 @@ jobs:
       - name: Shpargalka vidjetini qo'shish
         run: |
           mkdir -p android/app/src/main/kotlin/uz/kali/kali_oquv
-          cp native/ShpargalkaWidget.kt android/app/src/main/kotlin/uz/kali/kali_oquv/
+          cp native/*.kt android/app/src/main/kotlin/uz/kali/kali_oquv/
           cp -r native/res/. android/app/src/main/res/
           python3 - <<'PY'
           p = 'android/app/src/main/AndroidManifest.xml'
